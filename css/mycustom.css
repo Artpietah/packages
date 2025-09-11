@@ -1,0 +1,15 @@
+@font-face {
+	font-family: 'grotesk';
+	src: url('../fonts/Grotesk.ttf');
+}
+@font-face {
+	font-family: 'Prodex';
+	src: url('../fonts/Prodex.otf');
+}
+
+.prodex {
+	font-family: 'Prodex', sans-serif;
+}
+.grotesk {
+	font-family: 'grotesk', sans-serif,'Prodex', sans-serif;
+}

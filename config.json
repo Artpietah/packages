@@ -1,0 +1,56 @@
+{
+    "hotspot": {
+        "id": "65",
+        "name": "NETGOPRO",
+        "description": "NETGOPRO LAIKIPIA is a hotspot service provider offering reliable and fast internet connectivity. We provide various data packages to suit your needs, ensuring you stay connected anytime, anywhere.",
+        "contact": [
+            {
+                "type": "tel",
+                "value": "0716000034"
+            },
+            {
+                "type": "mailto",
+                "value": "info@netgopro.co.ke"
+            }
+        ],
+        "logo": "",
+        "background": "",
+        "terms": "By using this hotspot service, you agree to our terms and conditions. Please use the service responsibly and adhere to all applicable laws and regulations. Unauthorized access or misuse of the service is prohibited.",
+        "privacyPolicy": "",
+        "image": "./images/ngpsbg.png",
+        "packages": [
+            {
+                "id": 1,
+                "name": "500MB",
+                "data": "500MB",
+                "validity": "24 Hours",
+                "price": "10",
+                "devices": 2,
+                "description": "Valid 24 Hours"
+            },
+            {
+                "id": 2,
+                "name": "UNLIMITED 3HRS",
+                "data": "Unlimited",
+                "validity": "3 Hours",
+                "price": "15",
+                "devices": 1,
+                "description": "Valid 3 Hours"
+            },
+            {
+                "id": 3,
+                "name": "UNLIMITED 4HRS",
+                "data": "Unlimited",
+                "validity": "4 Hours",
+                "price": "20",
+                "devices": 1,
+                "description": "Valid 4 Hours"
+            }
+          
+        ]
+    },
+    "baseURL" :"https://laikipia.netgopro.co.ke/v7",
+    "router": 45,
+    "version": "1.0.0"
+
+}

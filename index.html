@@ -1,0 +1,1685 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" sizes="32x32" href="./favicon.ico">
+    <title></title>
+    <script src="./js/tailwind.js"></script>
+    <link rel="stylesheet" type="text/css" href="./css/mycustom.css">
+    <link rel="stylesheet" type="text/css" href="./css/iziToast.min.css"> 
+    <script src="./js/iziToast.min.js" type="text/javascript"></script>  
+</head>
+<body class="grotesk relative bg-gray-200 dark:bg-gray-900 text-gray-900  dark:text-gray-200 ">
+<!--  -->
+    <div class="relative " id="section">
+        <header class=" ">
+            <nav class=" border-gray-200 py-2.5 ">
+                <div class="flex flex-wrap items-center justify-between max-w-screen-xl px-4  mx-auto ">
+                    <a href="" class="flex items-center">
+                        <span class="self-center text-[20px] font-semibold whitespace-nowrap dark:text-white" id="hotspot"></span>
+                    </a>
+                    <div class="flex items-center lg:order-2">
+                        <button id="connect" type="button" class="text-gray-900 bg-white hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-600 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 mr-2 mb-2">
+                        CONNECT 
+                        </button>
+                        
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <section class="h-full w-full flex flex-col min-h-screen">
+            <div class="" id="maincontent">
+            <div class="mx-auto w-full max-w-screen-xl p-4 flex flex-col flex-wrap items-center justify-center   ">
+                
+                <h2 class="mb-2  font-semibold text-gray-900 dark:text-white">HOW TO CONNECT</h2>
+                <ol class="max-w-md space-y-1 text-gray-500 list-decimal list-inside dark:text-gray-400 mb-1">
+                    <li>
+                        <span class="font-semibold text-gray-900 dark:text-white">CLICK </span> your favorite <span class="font-semibold text-gray-900 dark:text-white">PACKAGE.</span> 
+                    </li>
+                    <li>
+                        <span class="font-semibold text-gray-900 dark:text-white">ENTER</span> your <span class="font-semibold text-gray-900 dark:text-white">MPESA PHONE</span> number.
+                    </li>
+                    <li>
+                        <span class="font-semibold text-gray-900 dark:text-white">ENTER</span> your <span class="font-semibold text-gray-900 dark:text-white">MPESA PIN</span> on the prompt to pay.
+                    </li>
+                    
+                </ol>
+                <p class=" text-gray-500 dark:text-orange-300 list-s">
+                    Have a question? contact <span class="font-semibold text-gray-900 dark:text-white" id="support"></span> 
+                </p>
+                
+            </div>
+            <div class="p-4 flex flex-wrap items-center justify-center   max-w-screen-xl px-4 mx-auto gap-5" id="preloader">
+                <!-- packages will be loaded here -->
+
+            </div>
+            <div class="p-4 flex flex-wrap items-center justify-center   max-w-screen-xl px-4 mx-auto gap-5" id="packages">
+                <!-- packages will be loaded here -->
+
+            </div>
+        </div>
+        <footer class="px-4 mt-auto">
+    <div class="mx-auto w-full max-w-screen-xl px-4 p-4 py-6 lg:py-8">
+        <div class="md:flex md:justify-between">
+          <div class="mb-6  ">
+              <a href="./" class="flex items-center">
+                  
+                  <span class="self-center text-[15px] font-semibold whitespace-nowrap dark:text-white" id="footerText"></span>
+
+              </a>
+              
+
+          </div>
+          <div class="grid grid-cols-1 gap-8 sm:gap-6 sm:grid-cols-3">
+              <div>
+                  <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Contact</h2>
+                  <ul class="text-gray-500 dark:text-gray-400 font-medium" id="contact">
+                      
+                      
+                  </ul>
+              </div>
+              <div>
+                  <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Resources</h2>
+                  <ul class="text-gray-500 dark:text-gray-400 font-medium">
+                      <!-- <li class="mb-4">
+                          <button class="cursor-pointer "  id="myaccount">My Account</button>
+                      </li> -->
+                      <li class="mb-4">
+                          <a  class="hover:underline">Knowledge Base</a>
+                      </li>
+                      <li class="mb-4">
+                          <a  class="hover:underline" id="mybalance">Check Balance</a>
+                      </li>
+                      <li>
+                          <a  class="hover:underline">My IP $(ip)</a>
+                      </li>
+                  </ul>
+              </div>
+              <div>
+                  <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Legal</h2>
+                  <ul class="text-gray-500 dark:text-gray-400 font-medium">
+                      <li class="mb-4">
+                          <button id="privacypolicy" class="">Privacy Policy</button>
+                      </li>
+                      <li>
+                          <button id="terms" class="">Terms &amp; Conditions</button>
+                      </li>
+                  </ul>
+              </div>
+          </div>
+      </div>
+      <hr class="my-6 border-gray-600 sm:mx-auto dark:border-gray-700 lg:my-8">
+      <div class="sm:flex sm:items-center sm:justify-between">
+          <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2025 <a href="" class="hover:underline" id="copyright"></a> | All Rights Reserved.
+          </span>
+          <div class="flex mt-4 sm:justify-center sm:mt-0">
+              <a href="#" class="text-gray-500 hover:text-gray-900 dark:hover:text-white">
+                  <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 8 19">
+                        <path fill-rule="evenodd" d="M6.135 3H8V0H6.135a4.147 4.147 0 0 0-4.142 4.142V6H0v3h2v9.938h3V9h2.021l.592-3H5V3.591A.6.6 0 0 1 5.592 3h.543Z" clip-rule="evenodd"></path>
+                    </svg>
+                  <span class="sr-only">Facebook page</span>
+              </a>
+              <a href="#" class="text-gray-500 hover:text-gray-900 dark:hover:text-white ms-5">
+                  <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 21 16">
+                        <path d="M16.942 1.556a16.3 16.3 0 0 0-4.126-1.3 12.04 12.04 0 0 0-.529 1.1 15.175 15.175 0 0 0-4.573 0 11.585 11.585 0 0 0-.535-1.1 16.274 16.274 0 0 0-4.129 1.3A17.392 17.392 0 0 0 .182 13.218a15.785 15.785 0 0 0 4.963 2.521c.41-.564.773-1.16 1.084-1.785a10.63 10.63 0 0 1-1.706-.83c.143-.106.283-.217.418-.33a11.664 11.664 0 0 0 10.118 0c.137.113.277.224.418.33-.544.328-1.116.606-1.71.832a12.52 12.52 0 0 0 1.084 1.785 16.46 16.46 0 0 0 5.064-2.595 17.286 17.286 0 0 0-2.973-11.59ZM6.678 10.813a1.941 1.941 0 0 1-1.8-2.045 1.93 1.93 0 0 1 1.8-2.047 1.919 1.919 0 0 1 1.8 2.047 1.93 1.93 0 0 1-1.8 2.045Zm6.644 0a1.94 1.94 0 0 1-1.8-2.045 1.93 1.93 0 0 1 1.8-2.047 1.918 1.918 0 0 1 1.8 2.047 1.93 1.93 0 0 1-1.8 2.045Z"></path>
+                    </svg>
+                  <span class="sr-only">Discord community</span>
+              </a>
+              <a href="#" class="text-gray-500 hover:text-gray-900 dark:hover:text-white ms-5">
+                  <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 17">
+                    <path fill-rule="evenodd" d="M20 1.892a8.178 8.178 0 0 1-2.355.635 4.074 4.074 0 0 0 1.8-2.235 8.344 8.344 0 0 1-2.605.98A4.13 4.13 0 0 0 13.85 0a4.068 4.068 0 0 0-4.1 4.038 4 4 0 0 0 .105.919A11.705 11.705 0 0 1 1.4.734a4.006 4.006 0 0 0 1.268 5.392 4.165 4.165 0 0 1-1.859-.5v.05A4.057 4.057 0 0 0 4.1 9.635a4.19 4.19 0 0 1-1.856.07 4.108 4.108 0 0 0 3.831 2.807A8.36 8.36 0 0 1 0 14.184 11.732 11.732 0 0 0 6.291 16 11.502 11.502 0 0 0 17.964 4.5c0-.177 0-.35-.012-.523A8.143 8.143 0 0 0 20 1.892Z" clip-rule="evenodd"></path>
+                </svg>
+                  <span class="sr-only">Twitter page</span>
+              </a>
+              <a href="#" class="text-gray-500 hover:text-gray-900 dark:hover:text-white ms-5">
+                  <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M10 .333A9.911 9.911 0 0 0 6.866 19.65c.5.092.678-.215.678-.477 0-.237-.01-1.017-.014-1.845-2.757.6-3.338-1.169-3.338-1.169a2.627 2.627 0 0 0-1.1-1.451c-.9-.615.07-.6.07-.6a2.084 2.084 0 0 1 1.518 1.021 2.11 2.11 0 0 0 2.884.823c.044-.503.268-.973.63-1.325-2.2-.25-4.516-1.1-4.516-4.9A3.832 3.832 0 0 1 4.7 7.068a3.56 3.56 0 0 1 .095-2.623s.832-.266 2.726 1.016a9.409 9.409 0 0 1 4.962 0c1.89-1.282 2.717-1.016 2.717-1.016.366.83.402 1.768.1 2.623a3.827 3.827 0 0 1 1.02 2.659c0 3.807-2.319 4.644-4.525 4.889a2.366 2.366 0 0 1 .673 1.834c0 1.326-.012 2.394-.012 2.72 0 .263.18.572.681.475A9.911 9.911 0 0 0 10 .333Z" clip-rule="evenodd"></path>
+                  </svg>
+                  <span class="sr-only">GitHub account</span>
+              </a>
+              <a href="#" class="text-gray-500 hover:text-gray-900 dark:hover:text-white ms-5">
+                  <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 0a10 10 0 1 0 10 10A10.009 10.009 0 0 0 10 0Zm6.613 4.614a8.523 8.523 0 0 1 1.93 5.32 20.094 20.094 0 0 0-5.949-.274c-.059-.149-.122-.292-.184-.441a23.879 23.879 0 0 0-.566-1.239 11.41 11.41 0 0 0 4.769-3.366ZM8 1.707a8.821 8.821 0 0 1 2-.238 8.5 8.5 0 0 1 5.664 2.152 9.608 9.608 0 0 1-4.476 3.087A45.758 45.758 0 0 0 8 1.707ZM1.642 8.262a8.57 8.57 0 0 1 4.73-5.981A53.998 53.998 0 0 1 9.54 7.222a32.078 32.078 0 0 1-7.9 1.04h.002Zm2.01 7.46a8.51 8.51 0 0 1-2.2-5.707v-.262a31.64 31.64 0 0 0 8.777-1.219c.243.477.477.964.692 1.449-.114.032-.227.067-.336.1a13.569 13.569 0 0 0-6.942 5.636l.009.003ZM10 18.556a8.508 8.508 0 0 1-5.243-1.8 11.717 11.717 0 0 1 6.7-5.332.509.509 0 0 1 .055-.02 35.65 35.65 0 0 1 1.819 6.476 8.476 8.476 0 0 1-3.331.676Zm4.772-1.462A37.232 37.232 0 0 0 13.113 11a12.513 12.513 0 0 1 5.321.364 8.56 8.56 0 0 1-3.66 5.73h-.002Z" clip-rule="evenodd"></path>
+                </svg>
+                  <span class="sr-only">Dribbble account</span>
+              </a>
+          </div>
+      </div>
+    </div>
+</footer>
+        </section>
+</div>
+<!-- modal -->
+
+<div id="modalOverlay" class=" fixed inset-0  bg-opacity-50 z-50 hidden items-center justify-center">
+        
+        <!-- Modal Container -->
+    <div id="modalContainer" class=" ">
+            
+        <div class=" w-[300px] max-h-full">
+                <!-- Modal content -->
+                <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                    <a id="closeModal" class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ml-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="authentication-modal">
+                        <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"></path>
+                        </svg>
+                        <span class="sr-only">Close modal</span>
+                    </a>
+                    <div class="px-6 py-6 lg:px-8" id="modal-content">
+                        <h3 class="mb-4 text-xl font-semibold   text-gray-900 dark:text-white" id="modalTitle"></h3>
+                        <div class="mb-4" id="modalBody">
+                            <!-- Modal body content will be injected here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+
+<!--  -->
+   <script src="./js/jquery-3.6.0.min.js"></script>
+   <script src="./js/confetti.min.js"></script>
+
+<script>
+        iziToast.settings({
+            timeout: 10000,
+            resetOnHover: true,
+            icon: 'material-icons'
+        });
+   
+    var mac, ip, baseURL, router, hotspot, description,contact, logo, background, copyright, terms, privacyPolicy, packages,CheckoutRequestID ,authtoken, userPhone,user,register, error;
+    $.getJSON("./pcks.json", function(data) {
+            packages = data || [];
+       });
+    $.getJSON("./config.json", function(data) {
+        router = data.hotspot.id;
+        baseURL =data.baseURL;
+        hotspot = data.hotspot.name;
+        description = data.hotspot.description;
+        contact = data.hotspot.contact;
+        logo = data.hotspot.logo;
+        background = data.hotspot.background;
+        copyright = hotspot;
+        terms = data.hotspot.terms;
+        privacyPolicy = data.hotspot.privacyPolicy;
+        
+
+        
+        packageImage = data.hotspot.image;
+       
+        $("title , #hotspot").text(hotspot);
+        
+        console.log("Url:", baseURL);
+         
+        
+
+        
+        if (logo) {
+            $("#logo").attr("src", logo);
+        } else {
+            $("#logo").remove();
+        }
+        if (background) {
+            $("#background").attr("src", background);
+        } else {
+            $("#background").remove();
+        }
+        if (description) {
+            $("#description").text(description);
+        } else {
+            $("#description").remove();
+        }
+
+        if (contact) {
+            contact.forEach(function(item) {
+                $("#contact").append('<li class="mb-4"><a href="' + item.type + ':' + item.value + '" class="hover:underline">' + item.value + '</a></li>');
+                if(item.type === 'tel'){
+                    $("#support").text(item.value);
+                }
+            });
+        } else {
+            $("#contact").remove();
+        }
+        $("#copyright").text(copyright);
+        $("#footerText").text(hotspot);
+        // get packages from api
+         for(let i = 0; i < 12; i++) 
+         $("#preloader").append(`
+                        <div class="package w-[320px] h-[180px] flex justify-center items-center flex-col text-gray-900   bg-gray-100 hover:bg-gray-800  dark:bg-gray-800 hover:text-white dark:text-white dark:hover:text-gray-900  dark:hover:bg-gray-100  hover:drop-shadow-2xl cursor-pointer duration-700 animate-pulse dark:bg-gray-700" >
+                            Loading...
+                        </div>`);
+       
+          
+            if (packages) {
+                console.log(packages);
+                packages = packages.sort((a, b) => {return a.cost - b.cost;}) || [];
+                
+                if(packages && packages.length > 0) {
+                    //   console.log(packages);
+                    packages.map(function(package) {
+                        $("#preloader").remove();
+                        $("#packages").append(`
+                            <div class="package w-[320px] h-[180px] flex flex-col text-gray-900   bg-gray-100 hover:bg-gray-800  dark:bg-gray-800 hover:text-white dark:text-white dark:hover:text-gray-900  dark:hover:bg-gray-100  hover:drop-shadow-2xl cursor-pointer duration-700" id="choosenpackage" data-packageid="${package.id}">
+                            <div class="flex flex-row justify-between items-center w-full h-full  ">
+                                <div class="relative data-holder w-[60%] h-full flex flex-col items-center justify-center items-center overflow-hidden">   
+                                    ${packageImage? '<img class="h-full " src="'+packageImage+'" alt="">':''}
+                                    <div class="absolute flex flex-col justify-center p-[1rem]  top-[0px] bottom-[0px] right-[0px] left-[0px] text-white">
+                                        <h3 class="prodex  text-[35px] font-semibold">${ formatData(package.data_limit, package.data_limit_unit)} </h3>
+                                        <p class="text-[10px] text-orange-400">Valid ${ package.time_limit+" "+package.time_limit_unit}</p>
+                                        <p class="text-gray-400 text-[10px] absolute bottom-[1rem] right-[1rem] left-[1rem] flex flex-col ">
+                                            ${package.shared_users>1 ? package.shared_users + " Devices" : package.shared_users + " Device"} 
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="relative flex flex-col items-center justify-center   w-[40%] h-full">
+                                    <h3 class="text-[15px]">${package.name}</h3>
+                                    <h3 class="text-xl font-semibold">${package.cost}/-</h3>
+                                </div>
+                            </div>
+                        </div>
+                        `);
+                    });
+                } else {
+                    $("#preloader").remove();
+                    $("#packages").append(`<div class"flex flex-col justfy-center items-center "><svg class="mx-auto h-12 w-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-5 5v-5zM9 17H4l5 5v-5zM12 3v12"></path>
+                        </svg>
+                        <h3 class="mt-2 text-sm font-medium text-gray">No packages. Please try again later.</h3>
+                        <p class="mt-1 text-sm text-gray-500 flex text-enter">Try again later. Or contact support.</p></p> </div`);
+                }
+            } else {
+                console.error("Error fetching packages:", response.error);
+                $("#preloader").remove();
+                $("#packages").append(`<div class"flex flex-col justfy-center items-center "><svg class="mx-auto h-12 w-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-5 5v-5zM9 17H4l5 5v-5zM12 3v12"></path>
+                        </svg>
+                        <h3 class="mt-2 text-sm font-medium text-gray">No packages. Please try again later.</h3>
+                        <p class="mt-1 text-sm text-gray-500 flex text-enter">Try again later. Or contact support.</p></p> </div`);
+            }
+
+
+            
+        
+        
+    });
+    
+    $(document).ready(function() {
+        //get url params    
+        const urlParams = new URLSearchParams(window.location.search);
+        urlip = urlParams.get('ip');
+        urlmac = urlParams.get('mac');
+        error = urlParams.get('error') || '';
+        // set cookies with 10min expiry
+        if (urlip && urlmac) {
+            document.cookie = `ip=${urlip}; max-age=${10 * 60}; path=/`;
+            document.cookie = `mac=${urlmac}; max-age=${10 * 60}; path=/`;
+        } else {
+            // try get from cookies
+            const cookies = document.cookie.split('; ').reduce((acc, cookie) => {
+                const [name, value] = cookie.split('=');
+                acc[name] = value;
+                return acc;
+            }, {});
+            ip = cookies.urlip || '';
+            mac = cookies.urlip || '';
+        }
+
+        console.log("IP:", ip);
+        console.log("MAC:", mac);
+
+        if(error){
+            iziToast.error({
+                title: 'Error',
+                message: error,
+                position: 'topCenter',
+                // close: true,
+            });
+            // console.log(error)
+        }
+     
+        $("#connect").click(function() {
+            // Handle login logic here
+            
+            showLoginForm();
+            
+        });
+
+        $("#close").click(function() {
+            $("#modalcontainer").hide();
+        });
+
+        $("#modalcontainer").click(function(event) {
+            if (event.target === this) {
+                $(this).hide();
+            }
+        });
+        // Handle privacy policy and terms
+       $(document).on("click", "#privacypolicy", function() {
+            // Display privacy policy content
+            $("#modalTitle").text('Privacy Policy');
+            displayModal(privacyPolicy || "Privacy Policy not available.");
+        });
+         $(document).on("click", "#terms", function() {
+            // Display terms and conditions content
+            $("#modalTitle").text('Terms & Conditions');
+            displayModal(terms || "Terms & Conditions not available.");
+         });
+        
+        $(document).on("click", "#myaccount", function() {
+            // Handle cancel button logic here
+                       myAccountLogin();
+
+        });
+        $(document).on("click", "#mybalance", function() {
+            // Handle cancel button logic here
+                   showBalanceForm()
+
+        });
+
+        // listen to click on package
+        $(document).on("click", "#choosenpackage", function() {
+            var packageId = $(this).data("packageid");
+
+            // Handle package selection logic here
+            //get package details from config.json or API
+           
+            var package = packages.find(pkg => pkg.id === packageId.toString());
+            if (!package) {
+                console.error("Package not found:", packageId);
+                return;
+            }
+            // Display package details or redirect to payment page
+            // console.log("Selected Package:", package);
+            packageDetails(package)
+            // You can also redirect to a payment page or display more details in a modal
+            
+        });
+        $(document).on("click", "#resend", function() {
+    // Handle cancel button logic here
+                if (!userPhone) {
+                    iziToast.error({
+                        title: 'Error',
+                        message: 'Cant resend OTP. Please enter your phone number first.',
+                        position: 'topCenter',
+                    });
+                    return;
+                }
+                 RequestOTP(userPhone)
+                    .then(response => {
+                        console.log("OTP response:", response);
+                        if (response.status === 'success') {
+                            authtoken = response.authtoken;
+                            iziToast.success({
+                                title: 'Success',
+                                message: 'OTP code sent successfully.',
+                                position: 'topCenter',
+                            });
+                           otpForm();
+                        } else {
+                            iziToast.error({
+                                title: 'Error',
+                                message: response.error || 'Failed to send OTP code.',
+                                position: 'topCenter',
+                            });
+                        }
+                    })
+                    .catch(error => {
+                        console.error("Error requesting OTP:", error);
+                        iziToast.error({
+                            title: 'Error',
+                            message: 'Failed to send OTP code. Please try again later.',
+                            position: 'topCenter',
+                        });
+                    }
+                 );
+                
+            });
+        $(document).on("click", "#verifyOTP", function() {
+                event.preventDefault();
+    // Handle cancel button logic here
+                if (!authtoken) {
+                    iziToast.error({
+                        title: 'Error',
+                        message: 'Unable to verify OTP. Please try again later.',
+                        position: 'topCenter',
+                    });
+                    return;
+                }
+                
+                const otpInputs = $("#otpCode").find('input[type="text"]');
+                let otpCode = '';
+                otpInputs.each(function() {
+                    otpCode += $(this).val();
+                });
+                if (otpCode.length === 4) {
+                    // Verify OTP code
+                    ApiRequest(`${baseURL}/api.php`, {
+                        action: "verifyOTP",
+                        otp: otpCode,
+                        authtoken: authtoken,
+                        phone: userPhone
+                    }).then(response => {
+                        if (response.status === 'success') {
+                            iziToast.success({
+                                title: 'Success',
+                                message: 'OTP verified successfully.',
+                                position: 'topCenter',
+                            });
+                            // Redirect to payment page or show success message
+                            // window.location.href = `payment.html?checkoutRequestID=${response.checkoutRequestID}`;
+                            if(register){
+                                ApiRequest(`${baseURL}/api.php`, {
+                                    action: "registerUser",
+                                    phone: userPhone,
+                                    pin: user.pin,
+                                    authtoken: response.authtoken
+                                }).then(registerResponse => {
+                                    if (registerResponse.status === 'success') {
+                                        iziToast.success({
+                                            title: 'Success',
+                                            message: 'User registered successfully. Please login with your new PIN.',
+                                            position: 'topCenter',
+                                        });
+                                        myAccountLogin();
+                                    } else {
+                                        createAccount();
+                                        iziToast.error({
+                                            title: 'Error',
+                                            message: registerResponse.error || 'Failed to register user.',
+                                            position: 'topCenter',
+                                        });
+                                    }
+                                     
+                                }).catch(error => {
+                                    createAccount();
+                                    console.error("Error registering user:", error);
+                                    iziToast.error({
+                                        title: 'Error',
+                                        message: 'Failed to register user. Please try again later.',
+                                        position: 'topCenter',
+                                    });
+                                });
+                                
+                            }else{
+
+                                resetPIN();
+                            }
+                            
+                        } else {
+                            iziToast.error({
+                                title: 'Error',
+                                message: response.error || 'Failed to verify OTP code.',
+                                position: 'topCenter',
+                            });
+                        }
+                    }).catch(error => {
+                        console.error("Error verifying OTP:", error);
+                        iziToast.error({
+                            title: 'Error',
+                            message: 'Invalid OTP Code.',
+                            position: 'topCenter',
+                        });
+                    });
+                } else {
+                    iziToast.error({
+                        title: 'Error',
+                        message: 'Please enter a valid PIN code.',
+                        position: 'topCenter',
+                    });
+                }
+
+                
+            });
+        $(document).on("click", "#veryfyAccount", function() {
+                event.preventDefault();
+                phone = $("#phonenumber").val();
+                if (!phone) {
+                    iziToast.error({
+                        title: 'Error',
+                        message: 'Please enter your phone number first.',
+                        position: 'topCenter',
+                    });
+                    return;
+                }
+                const otpInputs = $("#pinCode").find('input[type="password"]');
+                let otpCode = '';
+                otpInputs.each(function() {
+                    otpCode += $(this).val();
+                });
+                if (otpCode.length === 4) {
+                    // Verify OTP code
+                    ApiRequest(`${baseURL}/api.php`, {
+                        action: "authenticateUser",
+                        otp: otpCode,
+                        phone: phone
+                    }).then(response => {
+                        if (response.status === 'success') {
+                            iziToast.success({
+                                title: 'Success',
+                                message: 'Login successful.',
+                                position: 'topCenter',
+                            });
+                            // Redirect to payment page or show success message
+                            // window.location.href = `payment.html?checkoutRequestID=${response.checkoutRequestID}`;
+                            
+                        } else {
+                            iziToast.error({
+                                title: 'Error',
+                                message: response.error || 'Failed to login. Try again.',
+                                position: 'topCenter',
+                            });
+                        }
+                    }).catch(error => {
+                        console.error("Authenticating User:", error);
+                        iziToast.error({
+                            title: 'Error',
+                            message: error.message || 'Invalid phone or PIN Code.',
+                            position: 'topCenter',
+                        });
+                    });
+                } else {
+                    iziToast.error({
+                        title: 'Error',
+                        message: 'Please enter valid account details.',
+                        position: 'topCenter',
+                    });
+                }
+
+                
+            });
+            $(document).on("click", "#forgot", function() {
+            // Handle cancel button logic here
+                userPhone = $("#phonenumber").val();
+                 
+                if (!userPhone) {
+                    iziToast.error({
+                        title: 'Error',
+                        message: 'Please enter your phone number first.',
+                        position: 'topCenter',
+                    });
+                    return;
+                }
+                register = false;
+                 RequestOTP(userPhone)
+                 .then(response => {
+                    console.log("OTP response:", response);
+                    if (response.status === 'success') {
+                        authtoken = response.authtoken;
+                        iziToast.success({
+                            title: 'Success',
+                            message: 'OTP code sent successfully.',
+                            position: 'topCenter',
+                        });
+                       otpForm();
+                    } else {
+                        iziToast.error({
+                            title: 'Error',
+                            message: response.message || 'Failed to send OTP code.',
+                            position: 'topCenter',
+                        });
+                    }
+                })
+                 .catch(error => {
+                    console.error("Error requesting OTP:", error);
+                    iziToast.error({
+                        title: 'Error',
+                        message: 'Failed to send OTP code. Please try again later.',
+                        position: 'topCenter',
+                    });
+                 }
+                 );
+              
+                    
+                
+            });
+
+            $(document).on("click", "#register", function() {
+            // Handle cancel button logic here
+                event.preventDefault();
+               var mobilenumber = $("#mobilenumber").val();
+               var pin = $("#pin").val();
+               var confirmPIN = $("#confirmPin").val();
+                if (!mobilenumber || !pin || !confirmPIN) {
+                    iziToast.error({
+                        title: 'Error',
+                        message: 'Please fill in all fields.',
+                        position: 'topCenter',
+                    });
+                    return;
+                }
+                
+                if (pin !== confirmPIN) {
+                    iziToast.error({
+                        title: 'Error',
+                        message: 'PIN and Confirm PIN do not match.',
+                        position: 'topCenter',
+                    });
+                    return;
+                }
+                
+                if (pin.length !== 4) {
+                    iziToast.error({
+                        title: 'Error',
+                        message: 'PIN must be 4 character long.',
+                        position: 'topCenter',
+                    });
+                    return;
+                }
+                register = true
+                user = {
+                    action: "registerUser",
+                    phone: mobilenumber,
+                    pin: pin,
+                    router: router
+                };
+                //CHeck if user already exists
+                ApiRequest(`${baseURL}/api.php`, {
+                    action: "checkUserExists",
+                    phone: mobilenumber
+                   
+                }).then(response => {
+                    if (response.status === 'success') {
+                        iziToast.error({
+                            title: 'Error',
+                            message: 'User already exists. Please login or reset your PIN.',
+                            position: 'topCenter',
+                        });
+                       
+                    } else {
+                        RequestOTP(mobilenumber)
+                                    .then(response => {
+                                        console.log("OTP response:", response);
+                                        if (response.status === 'success') {
+                                            userPhone = mobilenumber; // Store user phone for later use
+                                            authtoken = response.authtoken; // Store auth token for OTP verification
+                                            iziToast.success({
+                                                title: 'Success',
+                                                message: 'OTP code sent successfully.',
+                                                position: 'topCenter',
+                                            });
+                                            otpForm();
+                                        } else {
+                                            iziToast.error({
+                                                title: 'Error',
+                                                message: response.error || 'Failed to send OTP code.',
+                                                position: 'topCenter',
+                                            });
+                                        }
+                                    })
+                                    .catch(error => {
+                                        console.error("Error requesting OTP:", error);
+                                        iziToast.error({
+                                            title: 'Error',
+                                            message: 'Failed to send OTP code. Please try again later.',
+                                            position: 'topCenter',
+                                        });
+                                    });
+                        }
+                }).catch(error => {
+                    console.error("Error checking user existence:", error);
+                    iziToast.error({
+                        title: 'Error',
+                        message: error.message || 'Failed to check user existence. Please try again later.',
+                        position: 'topCenter',
+                    });
+                });
+
+            });
+
+            $(document).on("click", "#savenewpin", function() {
+            // Handle cancel button logic here
+                event.preventDefault();
+                const newPin = $("#newpin").val();
+                const confirmPin = $("#confirmnewpin").val();
+                
+                if (newPin !== confirmPin) {
+                    iziToast.error({
+                        title: 'Error',
+                        message: 'New PIN and Confirm PIN do not match.',
+                        position: 'topCenter',
+                    });
+                    return;
+                }
+                
+                if (newPin.length !== 4) {
+                    iziToast.error({
+                        title: 'Error',
+                        message: 'PIN must be 4 character long.',
+                        position: 'topCenter',
+                    });
+                    return;
+                }
+                
+                ApiRequest(`${baseURL}/api.php`, {
+                    action: "resetPIN",
+                    newpin: newPin,
+                    authtoken: authtoken,
+                    phone: userPhone
+                }).then(response => {
+                    if (response.status === 'success') {
+                        iziToast.success({
+                            title: 'Success',
+                            message: 'PIN reset successfully. Please login with your new PIN.',
+                            position: 'topCenter',
+                        });
+                        myAccountLogin();
+                    } else {
+                        iziToast.error({
+                            title: 'Error',
+                            message: response.error || 'Failed to reset PIN.',
+                            position: 'topCenter',
+                        });
+                    }
+                }).catch(error => {
+                    console.error("Error resetting PIN:", error);
+                    iziToast.error({
+                        title: 'Error',
+                        message: 'Failed to reset PIN. Please try again later.',
+                        position: 'topCenter',
+                    });
+                });
+              
+                    
+                
+            });
+         
+
+            
+            // Close modal events
+            $('#closeModal, #cancelBtn').click(closeModal);
+            
+            // Close on overlay click (but not on modal content)
+            $overlay.click(function(e) {
+                if (e.target === this) {
+                    closeModal();
+                }
+            });
+            
+            // Close on Escape key
+            $(document).keydown(function(e) {
+                if (e.key === 'Escape' && $overlay.hasClass('flex')) {
+                    closeModal();
+                }
+            });
+            
+            // Confirm button action
+            $('#confirmBtn').click(function() {
+                alert('Confirmed!');
+                closeModal();
+            });
+        // Handle search functionality with name or price
+        // $("#search").on("input", function() {
+        //     var searchTerm = $(this).val().toLowerCase();
+        //     $("#packages .package").each(function() {
+        //         var packageName = $(this).find("h3").first().text().toLowerCase();
+        //         var packagePrice = $(this).find("h3").last().text().toLowerCase();
+        //         if (packageName.includes(searchTerm) || packagePrice.includes(searchTerm)) {
+        //             $(this).show();
+        //         } else {
+        //             $(this).hide();
+        //         }
+        //     });
+        // });
+       
+        // Handle modal display
+        function packageDetails(package) {
+            $("#modalTitle").text('Complete payment');
+            displayModal(`
+                <hr class="mb-4 border-gray-700 sm:mx-auto dark:border-gray-600 ">
+                <div class="mb-4 package w-full h-[130px]  flex flex-col text-gray-900   bg-gray-100 hover:bg-gray-800  dark:bg-gray-800 hover:text-white dark:text-white       dark:hover:text-gray-900  dark:hover:bg-gray-100  hover:drop-shadow-2xl cursor-pointer duration-700 ">
+                    <div class="flex flex-row justify-between items-center w-full h-full  ">
+                        <div class="relative data-holder w-[60%] h-full flex flex-col items-center justify-center items-center overflow-hidden">
+                            ${packageImage? '<img class="" src="'+packageImage+'" alt="">':''}
+                            <div class="absolute flex flex-col justify-center p-[1rem]  top-[0px] bottom-[0px] right-[0px] left-[0px] text-white">
+                                <h3 class="prodex  text-[25px] font-semibold">${ formatData(package.data_limit, package.data_limit_unit)} </h3>
+                                <p class="text-[10px] text-orange-400">${ package.time_limit+" "+package.time_limit_unit}</p>
+                                <p class="text-gray-400 text-[10px] absolute bottom-[1rem] right-[1rem] left-[1rem]">
+                                    ${package.shared_users>1 ? package.shared_users + " Devices" : package.shared_users + " Device"} 
+                                </p>
+                            </div>
+                        </div>
+                        <div class="relative flex flex-col items-center justify-center   w-[40%] h-full">
+                            <h3 class="text-[10px]">${package.name}</h3>
+                            <h3 class="text-[15px] font-semibold">${package.cost}/-</h3>
+                        </div>
+                    </div>
+                </div>
+                <form class="space-y-6" action="#">
+                    <div>
+                        <label for="phone" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Enter MPESA Number to pay Ksh. ${package.cost}/-</label>
+                        <input type="text" name="selected" id="selected" hidden="" value="${package.id}">
+                        <input type="text" title="Enter your MPESA phone number" name="phone" id="phone" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="07/01 XXXXXXXX" onkeypress="return event.charCode >= 48 && event.charCode <= 57" maxlength="10" required="">
+                    </div>
+
+                    <button type="button" id="initiatePayment" class="text-white bg-[#000] hover:bg-[#0e95bb]/80 focus:ring-4 focus:outline-none focus:ring-[#29a1c4]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:hover:bg-[#0e95bb]/80 dark:focus:ring-[#29a1c4]/40  w-full flex justify-center items-center" onclick="payNow()">
+                        <span id="spinner" class="hidden mr-3 -ml-1">
+                       <svg class="mr-3 -ml-1 size-5 animate-spin text-white "  xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>
+                       </span>
+                    Pay Now
+                    </button>
+                    
+                </form>
+                <div class="w-full flex flex-raw mt-[15px] justify-center items-center gap-2">
+                        <code id="privacypolicy" class="text-[10px] text-[#d946ef] cursor-pointer">Privacy Policy</code>
+                        <p class="text-[10px]">•</p>
+                        <code id="terms" class="text-[10px] text-[#d946ef] cursor-pointer">Terms &amp; Conditions</code>
+                </div>
+                        
+            `);
+              console.log("Selected Package:", package);
+            
+        }  
+        
+
+        function showLoginForm() {
+            $("#modalTitle").text('Connect to WIFI');
+            
+            displayModal(`<hr class="mb-2 border-gray-700 sm:mx-auto dark:border-gray-600 ">
+                <form class="space-y-6" action="$(link-login-only)" name="login" $(if chap-id)  onSubmit="return doLogin()" $(endif) method="post">
+                    <div>
+                        <input type="hidden" name="dst" value="$(link-orig)" />
+                        <input type="hidden" name="popup" value="true" />
+                        <input type="hidden" name="mac" value="$(mac-esc)" />
+                        <input type="hidden" name="ip" value="$(ip)" />
+                        <input type="hidden" name="password" value="" />
+                        <label for="username" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Enter ACCESS TOKEN  /  Paste your MPESA message to LOGIN</label>
+                        <input type="text" name="username" id="username" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="RHI1FEZ4DZ" onkeypress="return (event.charCode >= 48 && event.charCode <= 57) || (event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122)"
+                        required >
+                    </div>
+                
+                    <button type="submit" id="loginUser" class="text-white bg-[#000] hover:bg-[#0e95bb]/80 focus:ring-4 focus:outline-none focus:ring-[#29a1c4]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:hover:bg-[#0e95bb]/80 dark:focus:ring-[#29a1c4]/40  w-full flex justify-center items-center" >
+                    Connect Now
+                    </button>
+                    
+                </form> 
+                
+                   `);
+                // Add event listener to clean token input
+                
+                // Add event listener to clean token input
+                
+                $("#username").on("input", function() {
+                    // Remove spaces and convert to uppercase
+                    let text = extractAccessToken($(this).val()).trim();
+                    let wordsArray =text.split(' ');
+                    $(this).val(wordsArray.splice(0, 1)[0]);
+
+                });
+                function extractAccessToken(text) {
+                    let tokenMatch = text.match(/Access Token : (\w+)/);
+                    return tokenMatch ? tokenMatch[1] : text;
+                }
+
+           
+        }
+
+        function myAccountLogin() {
+            $("#modalTitle").text('LOGIN');
+            
+            displayModal(`<hr class="mb-2 border-gray-700 sm:mx-auto dark:border-gray-600 ">
+                
+                    <header class="mb-4">
+                        
+                        <p class="text-[15px] text-slate-500">Enter account details for verification.</p>
+                    </header>
+                    <form id="login-form">
+                        <div class="mb-4">
+                            <label for="phonenumber" class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Enter Phone Number</label>
+                            <input type="text" title="Enter your MPESA phone number" name="phonenumber" id="phonenumber" class=" mb-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="07/01 XXXXXXXX" onkeypress="return event.charCode >= 48 && event.charCode <= 57" maxlength="10" required="">
+
+                        </div>
+                        <label for="" class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Enter PIN</label>
+                        <div class="flex items-center justify-center gap-2" id="pinCode">
+                            <input
+                                type="password"
+                                class="w-12 h-12 text-center  font-extrabold dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-gray bg-gray-50 border border-transparent hover:border-slate-200 appearance-none rounded  outline-none focus:bg-white focus:border-indigo-400 focus:ring-2 focus:ring-indigo-100"
+                                maxlength="1" />
+                            <input
+                                type="password"
+                                class="w-12 h-12 text-center  font-extrabold dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-gray bg-gray-50 border border-transparent hover:border-slate-200 appearance-none rounded  outline-none focus:bg-white focus:border-indigo-400 focus:ring-2 focus:ring-indigo-100"
+                                maxlength="1" />
+                            <input
+                                type="password"
+                                class="w-12 h-12 text-center  font-extrabold dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-gray bg-gray-50 border border-transparent hover:border-slate-200 appearance-none rounded  outline-none focus:bg-white focus:border-indigo-400 focus:ring-2 focus:ring-indigo-100"
+                                maxlength="1" />
+                            <input
+                                type="password"
+                                class="w-12 h-12 text-center  font-extrabold dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-gray bg-gray-50 border border-transparent hover:border-slate-200 appearance-none rounded  outline-none focus:bg-white focus:border-indigo-400 focus:ring-2 focus:ring-indigo-100"
+                                maxlength="1" />
+                        </div>
+                        <div class="max-w-[260px] mx-auto mt-4">
+                            <button type="submit"
+                                class="w-full inline-flex justify-center whitespace-nowrap rounded-lg bg-indigo-500 px-3.5 py-2.5 text-sm font-medium text-white shadow-sm shadow-indigo-950/10 hover:bg-indigo-600 focus:outline-none focus:ring focus:ring-indigo-300 focus-visible:outline-none focus-visible:ring focus-visible:ring-indigo-300 transition-colors duration-150" id="veryfyAccount">Verify
+                                Account</button>
+                        </div>
+                    </form>
+                    <div class="text-sm text-slate-500 mt-4" id="createAccount">Dodn't have an account? <a class="font-medium text-indigo-500 hover:text-indigo-600" href="#0">Create Account</a></div>
+                    <div class="text-sm text-slate-500 " id="forgot">Forgot PIN? <a class="font-medium text-indigo-500 hover:text-indigo-600" href="#0">Reset</a></div>
+                    
+            
+        `);
+            otpFormEventListeners("login-form", "password");
+        
+        }
+
+          function createAccount() {
+                $("#modalTitle").text('REGISTER');
+                
+                displayModal(`<hr class="mb-2 border-gray-700 sm:mx-auto dark:border-gray-600 ">
+                        <header class="mb-4">
+                            
+                            <p class="text-[15px] text-slate-500">Enter the following details to create an account.</p>
+                        </header>
+                        <form class="space-y-6"  id="register-form">
+                            <div >
+                                <label for="mobilenumber" class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Enter Phone Number</label>
+                                <input type="text" title="Enter your MPESA phone number" name="mobilenumber" id="mobilenumber" class=" mb-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="07/01 XXXXXXXX" onkeypress="return event.charCode >= 48 && event.charCode <= 57" maxlength="10" required="">
+
+                                <label for="pin" class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Enter PIN </label>
+                                <input type="password" title="Enter PIN" name="pin" id="pin" class="mb-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="Enter PIN"  maxlength="4" required="">
+
+                                <label for="confirmPin" class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Confirm PIN </label>
+                                <input type="password" title="Confirm PIN" name="confirmPin" id="confirmPin" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="Confirm PIN"  maxlength="4" required="">
+                            </div>
+
+                           <button  id="register"
+                                class="w-full inline-flex justify-center whitespace-nowrap rounded-lg bg-indigo-500 px-3.5 py-2.5 text-sm font-medium text-white shadow-sm shadow-indigo-950/10 hover:bg-indigo-600 focus:outline-none focus:ring focus:ring-indigo-300 focus-visible:outline-none focus-visible:ring focus-visible:ring-indigo-300 transition-colors duration-150">Create
+                                Account
+                            </button>
+                            
+                        </form>
+                        <div class="text-sm text-slate-500 mt-4" id="myaccount">Already have an account? <a class="font-medium text-indigo-500 hover:text-indigo-600" href="#0">Login</a></div>
+                
+            `);
+            acceptAlphaNumeric('register-form');
+        }
+        function otpForm() {
+            $("#modalTitle").text('OTP Verification');
+            
+            displayModal(`<hr class="mb-2 border-gray-700 sm:mx-auto dark:border-gray-600 ">
+                
+                    <header class="mb-4">
+                        <p class="text-[15px] text-slate-500">Enter the OTP verification code that was sent to your phone number.</p>
+                    </header>
+                    <form id="otp-form">
+            
+                        <div class="flex items-center justify-center gap-2" id="otpCode">
+                            <input
+                                type="text"
+                                class="w-12 h-12 text-center  font-extrabold dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-gray bg-gray-50 border border-transparent hover:border-slate-200 appearance-none rounded  outline-none focus:bg-white focus:border-indigo-400 focus:ring-2 focus:ring-indigo-100"
+                                maxlength="1" />
+                            <input
+                                type="text"
+                                class="w-12 h-12 text-center  font-extrabold dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-gray bg-gray-50 border border-transparent hover:border-slate-200 appearance-none rounded  outline-none focus:bg-white focus:border-indigo-400 focus:ring-2 focus:ring-indigo-100"
+                                maxlength="1" />
+                            <input
+                                type="text"
+                                class="w-12 h-12 text-center  font-extrabold dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-gray bg-gray-50 border border-transparent hover:border-slate-200 appearance-none rounded  outline-none focus:bg-white focus:border-indigo-400 focus:ring-2 focus:ring-indigo-100"
+                                maxlength="1" />
+                            <input
+                                type="text"
+                                class="w-12 h-12 text-center  font-extrabold dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-gray bg-gray-50 border border-transparent hover:border-slate-200 appearance-none rounded  outline-none focus:bg-white focus:border-indigo-400 focus:ring-2 focus:ring-indigo-100"
+                                maxlength="1" />
+                        </div>
+                        <div class="max-w-[260px] mx-auto mt-4">
+                            <button type="submit"
+                                class="w-full inline-flex justify-center whitespace-nowrap rounded-lg bg-indigo-500 px-3.5 py-2.5 text-sm font-medium text-white shadow-sm shadow-indigo-950/10 hover:bg-indigo-600 focus:outline-none focus:ring focus:ring-indigo-300 focus-visible:outline-none focus-visible:ring focus-visible:ring-indigo-300 transition-colors duration-150" id="verifyOTP">Verify
+                                OTP</button>
+                        </div>
+                    </form>
+                    <div class="text-sm text-slate-500 mt-4" id="resend">Didn't receive code? <a class="font-medium text-indigo-500 hover:text-indigo-600" href="#0">Resend</a></div>               
+            
+        `);
+        
+           otpFormEventListeners('otp-form', 'text');
+        }
+          function resetPIN() {
+                $("#modalTitle").text('RESET PIN');
+                
+                displayModal(`<hr class="mb-2 border-gray-700 sm:mx-auto dark:border-gray-600 ">
+                        <header class="mb-4">
+                            
+                            <p class="text-[15px] text-slate-500">Enter the following details to reset your PIN.</p>
+                        </header>
+                        <form class="space-y-6" id="reset-pin-form">
+                            <div>
+                                <label for="newpin" class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Enter New PIN </label>
+                                <input type="password" title="Enter PIN" name="newpin" id="newpin" class="mb-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="Enter New PIN" maxlength="4" required="">
+
+                                <label for="confirmnewpin" class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Confirm PIN </label>
+                                <input type="password" title="Confirm PIN" name="confirmnewpin" id="confirmnewpin" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="Confirm PIN"   maxlength="4" required="">
+                            </div>
+
+                           <button type="submit" id="savenewpin"
+                                class="w-full inline-flex justify-center whitespace-nowrap rounded-lg bg-indigo-500 px-3.5 py-2.5 text-sm font-medium text-white shadow-sm shadow-indigo-950/10 hover:bg-indigo-600 focus:outline-none focus:ring focus:ring-indigo-300 focus-visible:outline-none focus-visible:ring focus-visible:ring-indigo-300 transition-colors duration-150">Reset
+                                PIN
+                            </button>
+                            
+                        </form>
+                        <div class="text-sm text-slate-500 mt-4" id="myaccount">Don't want to reset? <a class="font-medium text-indigo-500 hover:text-indigo-600" href="#0">Login</a></div>
+                
+            `);
+            acceptAlphaNumeric('reset-pin-form');
+    
+        }
+            // Handle create account click
+            $(document).on("click", "#createAccount", function() {
+            // Handle cancel button logic here
+                createAccount();
+            });
+            
+        
+       
+       
+        
+    });
+    function successPayment(token) {
+            $("#modalTitle").text('Purchase Successful');
+            confetti()
+            displayModal(`
+                <hr class="mb-4 border-gray-700 sm:mx-auto dark:border-gray-600 ">
+                <div class="flex justify-center  flex-col">
+                    <p class="text-center mb-1 text-sm font-normal text-gray-500 dark:text-gray-400">Thank you for your purchase.</p>         
+                    <div id="qrcode" class="flex w-full ">
+                        <div class="h-30 flex justify-center w-full  gap-2 p-4 ">
+                            <img class="h-20 animate-ping" src="./success.png"/>
+                            <img class="h-20 absolute" src="./success.png"/>
+                        </div>
+                    </div>
+                       
+                    <code class="text-purple-500 dark:text-purple-400 text-center"> ${token} </code>
+                    <p class="text-center mb-4 text-sm font-normal text-gray-500 dark:text-gray-400">If nothing happens click GO</p>
+                    <button id="chaplogin"  type="button" onclick="console.log('clocked')" class="mb-2 flex justify-center text-white bg-green-600  focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-100 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center ">
+                       Connecting ...
+                    </button>
+                </div>
+                    
+                    
+            `);
+            const chaplogin = document.getElementById("chaplogin")
+            chaplogin.style.backgroundColor="#4b5563"
+            chaplogin.disabled = true;
+            var counter = 5;
+            setInterval(()=>{
+                if(counter ==1 ){
+                    confetti();
+                }
+                
+                else if(counter<=0){
+                     
+                    connectUser(token)
+                    chaplogin.style.backgroundColor="#059669"
+                    chaplogin.textContent = "GO"
+                    chaplogin.disabled = false;
+                    clearInterval();
+                    return
+                }
+                counter--;
+                console.log(`Connecting in ${counter}s`)
+                chaplogin.textContent = `Connecting in ${counter}s`
+            },1000)
+        }
+     const section = document.getElementById("section");
+    function blur(){
+        section.classList.add("blur-2xl");
+    }
+    function unblur(){
+        section.classList.remove("blur-2xl");
+    }
+    const $overlay = $('#modalOverlay');
+    const $container = $('#modalContainer');
+    
+    // Open modal
+    
+    function displayModal(content) {
+        // Set modal content
+            $overlay.removeClass('hidden').addClass('flex');
+        // Trigger animation after showing
+        blur();
+        var z = document.getElementById('modalBody'); // is a node
+        z.innerHTML = 'test satu dua tiga';
+        $("#modalBody").html(content || '');
+        setTimeout(function() {
+            $container.removeClass('scale-95 opacity-0').addClass('scale-100 opacity-100');
+        }, 10);
+    }
+    function displayLoading(content='Please wait...') {
+        iziToast.info({
+            id: 'loadingToast',
+            title: 'Processing',
+            class: 'loading-toast',
+            message: content ,
+            position: 'center',
+            timeout: false,
+            close: false,
+            progressBar: false,
+            overlay: true,
+            overlayClose: false,
+            transitionIn: 'bouiceInLeft',
+            
+        });
+    }
+    function closeLoading() {
+        iziToast.destroy({ id: 'loadingToast' });
+    }
+    function blurModal(){
+        $container.classList.add("blur-2xl");
+    }
+    function unblurModal(){
+        $container.classList.remove("blur-2xl");
+    }
+    
+
+    
+    function closeModal() {
+        $container.removeClass('scale-100 opacity-100').addClass('scale-95 opacity-0');
+        setTimeout(function() {
+            $overlay.removeClass('flex').addClass('hidden');
+            unblur();
+        }, 300);
+    }
+    function toggleButtonState(button, state) {
+        
+        
+        if (state === 'loading') {
+            button.prop("disabled", true);
+            button.text("Processing...");
+
+        } else {
+            button.prop("disabled", false);
+            button.text("Pay Now");
+        }
+    }
+
+    function connectUser(username, password='') {
+        document.sendin.username.value = username;
+        document.sendin.password.value = hexMD5('$(chap-id)' + password + '$(chap-challenge)');
+        document.sendin.submit();
+        return false;
+    }
+
+    function payNow() {
+        // get phone number and package id
+        
+         
+        const paybutton = $("#initiatePayment");
+        toggleButtonState(paybutton, 'loading');
+        const phone = $("#phone").val();
+        const selected = $("#selected").val();
+        if (!phone) {
+            toggleButtonState(paybutton, 'default');
+            iziToast.error({
+                title: 'Error',
+                message: 'Please enter your phone number and try again.',
+                position: 'topCenter',
+            });
+            return;
+
+        }
+        if (phone.length !== 10 || !/^\d+$/.test(phone)) {
+            toggleButtonState(paybutton, 'default');
+            iziToast.error({
+                title: 'Error',
+                message: 'Please enter a valid phone number.',
+                position: 'topCenter',
+            });
+            return;
+        }
+         console.log("pay now clicked with phone:", phone, "and package id:", selected);
+        // Make an API request to the server to initiate payment
+        ApiRequest(`${baseURL}/api.php`, 
+            {
+            action: "initiatePayment",
+            phone: phone,
+            package: selected
+        }
+        )
+            .then(response => {
+                // console.log("Payment initiated successfully:", response);
+                iziToast.success({
+                    title: 'Success',
+                    message: response.message,
+                    position: 'topCenter',
+                });
+                // create a transaction status checker
+                CheckoutRequestID = response.CheckoutRequestID;
+                // console.log("CheckoutRequestID:", CheckoutRequestID);
+                    var counter = 5;
+                    const interval = setInterval(() => {
+                        // if (counter<=0){
+                        //     iziToast.info({
+                        //         title: 'Timeout',
+                        //         message: 'Checkout timeout.',
+                        //         position: 'topCenter',
+                        //     });
+                        //     clearInterval(interval);
+                        //     toggleButtonState(paybutton, 'default');
+                        //     closeLoading();
+                        
+                        // }
+
+                        ApiRequest(`${baseURL}/api.php`, 
+                            {
+                                action: "checkPaymentStatus",
+                                checkoutRequestID: CheckoutRequestID
+                            }
+                        )
+                        .then(statusResponse => {
+                            console.log("Payment status->>>:", statusResponse);
+                            if (statusResponse.status === "success") {
+                                iziToast.success({
+                                    title: `Success`,
+                                    message: "Your payment was successful. Connecting you in a few seconds...",
+                                    position: 'topCenter',
+                                });
+                                   
+
+                                successPayment(statusResponse.token);
+                                confetti({
+                                            particleCount: 100,
+                                            spread: 70,
+                                            origin: { y: 0.6 },
+                                        });
+                               
+                                clearInterval(interval);
+                               
+                            } else if (statusResponse.status === "processing") {
+                                console.log("Payment is still processing...", statusResponse);
+                                // Optionally, you can show a toast or update UI to indicate processing state
+                                
+                            } else {
+                                toggleButtonState(paybutton, 'default');
+                                iziToast.error({
+                                    title: 'Payment Failed',
+                                    message: statusResponse.message || 'An error occurred while processing the payment.',
+                                    position: 'topCenter',
+                                });
+                                clearInterval(interval);
+                            }
+                            
+                        })
+                        .catch(error => {
+                            toggleButtonState(paybutton, 'default');
+                            console.error("Error checking payment status:", error);
+                            iziToast.error({
+                                title: 'Error',
+                                message: error.message || 'An error occurred while checking payment status.',
+                                position: 'topCenter',
+                            });
+                            clearInterval(interval);
+                        });
+
+                        counter --;
+                    }, 5000); // Check every 5 seconds
+            })
+            .catch(error => {
+                toggleButtonState(paybutton, 'default');
+                // console.error("Error initiating payment:", error);
+                iziToast.error({
+                    title: 'Error',
+                    message: error.message || 'An error occurred while initiating payment.',
+                    position: 'topCenter',
+                });
+            });
+            
+
+
+        
+    }
+    
+    function RequestOTP(phone){
+
+        return ApiRequest(`${baseURL}/api.php`, 
+                    {
+                        action: "requestOTP",
+                        phone: phone,
+                        usertype: register ? "register" : "login",
+                    }).then(response => {
+                        return response;
+                    }).catch(error => {
+                       
+                        return error;
+                    });  
+    }
+    function ApiRequest(url, jsonData) {
+         jsonData.mac = mac;
+         jsonData.ip = ip;
+         jsonData.router = router;
+        console.log(jsonData);
+        if(jsonData.action == "packages" ){
+           
+        }
+        else if(jsonData.action != "checkPaymentStatus" ){
+            closeLoading();
+            displayLoading();
+        }
+        
+    return new Promise((resolve, reject) => {
+        var httpr = new XMLHttpRequest();
+        httpr.open("POST", url, true);
+        httpr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        httpr.onreadystatechange = function () {
+            if (httpr.readyState == 4 && httpr.status == 200) {
+                try {
+                    var response = JSON.parse(httpr.responseText);
+                    if (response.status === "success") {
+                        jsonData.action== "initiatePayment" ? null : closeLoading();
+                        resolve(response);
+                        //  console.log('success' , httpr.responseText);
+                    }
+                    else if (response.status === "processing") {
+                        resolve(response);
+                       
+                    }
+                    else if (response.status === "userNotFound") {
+                        resolve(response);
+                       
+                    }
+                     else {
+                        closeLoading();
+                        reject(new Error(response.message || "An error occurred"));
+                        //  console.log('Response 1' , httpr.responseText);
+                    }
+                } catch (e) {
+                    closeLoading();
+                    reject(new Error("Invalid JSON response"));
+                    // console.log('Response 2' , httpr.responseText);
+                }
+            } else if (httpr.readyState == 4) {
+                // console.log('Response 3' , httpr.responseText);
+                closeLoading();
+                reject(new Error("Request failed with status: " + httpr.status));
+            }
+        
+        }
+        httpr.send(JSON.stringify(jsonData));
+    });
+}
+    function  formatData(data, units){
+        const unitMap = {
+            'B': 1,
+            'KB': 1024,
+            'MB': 1024 * 1024,
+            'GB': 1024 * 1024 * 1024,
+            'TB': 1024 * 1024 * 1024 * 1024,
+            'Unlimited': "Unlimited", // For unlimited data, we can use a special case
+        };
+        if (units in unitMap) {
+            return units=="Unlimited"? "Unlimited" : data + ' ' + units;
+        } else {
+            throw new Error("Invalid units provided");
+        }
+    }
+    function formatUptime(duration, units) {
+        const unitMap = {
+            's': 1,
+            'Minutes': 60,
+            'Hours': 3600,
+            'Days': 86400,
+            'Months': 2592000,
+            'Unlimited': "Unlimited", // For unlimited uptime, we can use a special case
+        };
+        if (units in unitMap) {
+            return units=="Unlimited"? "Unlimited" : duration / unitMap[units] + ' ' + units;
+        } else {
+            throw new Error("Invalid units provided");
+        }
+    } 
+            function showBalanceForm() {
+            $("#modalTitle").text('Check Balance');
+            
+            displayModal(`<hr class="mb-2 border-gray-700 sm:mx-auto dark:border-gray-600 ">
+                <form class="space-y-6" name='balance-form'>
+                    <div>
+                        <label for="username" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Enter ACCESS TOKEN  /  Paste your MPESA message to check balance</label>
+                        <input type="text" name="username" id="username2" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="RHI1FEZ4DZ" onkeypress="return (event.charCode >= 48 && event.charCode <= 57) || (event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122)"
+                        required >
+                    </div>
+                
+                    <button type="submit" id="checkbalance" class="text-white bg-[#000] hover:bg-[#0e95bb]/80 focus:ring-4 focus:outline-none focus:ring-[#29a1c4]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:hover:bg-[#0e95bb]/80 dark:focus:ring-[#29a1c4]/40  w-full flex justify-center items-center" >
+                    Check Balance
+                    </button>
+                    
+                </form> 
+                
+                    `);
+                // Add event listener to clean token input
+                
+                $("#username2").on("input", function() {
+                    // Remove spaces and convert to uppercase
+                    let text = extractAccessToken($(this).val()).trim();
+                    let wordsArray =text.split(' ');
+                    $(this).val(wordsArray.splice(0, 1)[0]);
+
+                });
+                function extractAccessToken(text) {
+                    let tokenMatch = text.match(/Access Token : (\w+)/);
+                    return tokenMatch ? tokenMatch[1] : text;
+                }
+
+                
+                $("#checkbalance").click(function() {
+                    event.preventDefault();
+                    var token = $("#username2").val();
+                    if (!token) {
+                        iziToast.error({
+                            title: 'Error',
+                            message: 'Please enter your ACCESS TOKEN first.',
+                            position: 'topCenter',
+                        });
+                        return;
+                    }
+                    checkBalance(token);
+                });
+           
+        }
+        function showBalance(data) {
+            $("#modalTitle").text(data?data.token : 'Balance info');
+            console.log(data);
+            
+            confetti()
+            displayModal(`
+                <hr class="mb-4 border-gray-700 sm:mx-auto dark:border-gray-600 ">
+                <div class="flex justify-center  flex-col">
+                     <h3 class="text-center text-lg font-semibold  text-gray-900 dark:text-white">${data.package.name}</h3>
+                     <div id="qrcode" class="flex w-full mb-4">
+                            <div class="h-15 flex justify-center w-full   p-4 ">
+                               
+                                <img class="h-10 absolute" src="./success.png"/>
+                            </div>
+                    </div>
+                    <table class="w-full mb-4">
+                        <tr>
+                            <td class="text-sm font-normal text-gray-500 dark:text-gray-400">Devices:<td>
+                            <td class="text-sm font-normal text-gray-500 dark:text-gray-400 pl-2" id="data_balance"> ${data.package.shared_users?data.package.shared_users:"--"}</td>
+                        </tr>
+                        <tr>
+                            <td class="text-sm font-normal text-gray-500 dark:text-gray-400">Upload:<td>
+                            <td class="text-sm font-normal text-gray-500 dark:text-gray-400 pl-2 justify-items-end" id="data_balance"> ${data.upload?data.upload:""}</td>
+                        </tr>
+                        <tr>
+                            <td class="text-sm font-normal text-gray-500 dark:text-gray-400">Download:</td>
+                            <td class="text-sm font-normal text-gray-500 dark:text-gray-400 pl-2 justify-items-end" id="data_balance"> ${data.download?data.download:"--"}</td>
+                        </tr>
+                        <tr>
+                            <td class="text-sm font-normal text-gray-500 dark:text-gray-400">Data used:</td>
+                            <td class="text-sm font-normal text-gray-500 dark:text-gray-400 pl-2 justify-items-end" id="data_balance"> ${data.total?data.total:"--"}</td>
+                        </tr>
+                        <tr>
+                            <td class="text-sm font-normal text-gray-500 dark:text-gray-400">Validity:</td>
+                            <td class="text-sm font-normal text-gray-500 dark:text-gray-400 pl-2 justify-items-end" id="validity"> ${data.package?data.package.time_limit+' '+data.package.time_limit_unit:"--"}</td>
+                        </tr>
+                        <tr>
+                            <td class="text-sm font-normal text-gray-500 dark:text-gray-400">Uptime:</td>
+                            <td class="text-sm font-normal text-gray-500 dark:text-gray-400 pl-2 justify-items-end" id="connected_since"> ${data.uptime?data.uptime:"--"} </td>
+                        </tr>
+                        <tr>
+                            <td class="text-sm font-normal text-gray-500 dark:text-gray-400">Expiry Date:</td>
+                            <td class="text-sm font-normal text-gray-500 dark:text-gray-400 pl-2 justify-items-end" id="expiry_date"> ${data.expiry?data.expiry:"--"} </td>
+                        </tr>
+                        
+                    </table>
+                       
+                    <code class="text-purple-500 dark:text-purple-400 text-center"> EXPIRED</code>
+                    <code class="text-purple-500 dark:text-green-400 text-center"> READY</code>
+                    <code class="text-purple-500 dark:text-orange-400 text-center"> EXHAUSTED</code>
+                    <p class="text-center  text-sm font-normal text-gray-500 dark:text-gray-400">Thank you!</p>
+                   
+                </div>
+                    
+                    
+            `);
+                // Add event listener to clean token input
+                
+                
+           
+        }
+        function formatBytesSimple(bytes, decimals = 2) {
+            bytes = bytes/(1024*1024*1024); // convert to KB
+            if (bytes === 0) return '0 Bytes';
+            const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
+            const i = Math.floor(Math.log(bytes) / Math.log(1024));
+            return (bytes / Math.pow(1024, i)).toFixed(decimals) + ' ' + sizes[i];
+        }
+    function checkBalance(token) {
+        ApiRequest(`${baseURL}/api.php`, 
+            {
+            action: "checkBalance",
+            token: token,
+            }
+        )
+        .then(response => {
+            console.log("Balance check successful:", response);
+            iziToast.success({
+                title: 'Success',
+                message: response.message || 'Balance retrieved successfully.',
+                position: 'topCenter',
+            });
+            // Show balance in modal
+            showBalance(response);
+        })
+        .catch(error => {
+            console.error("Error checking balance:", error);
+            iziToast.error({
+                title: 'Error',
+                message: error.message || 'An error occurred while checking balance.',
+                position: 'topCenter',
+            });
+        });
+    }
+    function otpFormEventListeners(formId, inputType) {
+        const form = document.getElementById(formId);
+        const inputs = [...form.querySelectorAll(`input[type=${inputType}]`)];
+        const submit = form.querySelector('button[type=submit]');
+
+        const handleKeyDown = (e) => {
+            if (
+                !/^[0-9a-zA-Z]{1}$/.test(e.key)
+                && e.key !== 'Backspace'
+                && e.key !== 'Delete'
+                && e.key !== 'Tab'
+                && !e.metaKey
+            ) {
+                e.preventDefault();
+            }
+
+            if (e.key === 'Delete' || e.key === 'Backspace') {
+                const index = inputs.indexOf(e.target);
+                if (index > 0) {
+                    inputs[index - 1].value = '';
+                    inputs[index - 1].focus();
+                }else if (index === 3) {
+                    inputs[3].value = '';
+                }
+            }
+        }
+
+        const handleInput = (e) => {
+            const { target } = e;
+            const index = inputs.indexOf(target);
+            if (target.value) {
+                if (index < inputs.length - 1) {
+                    inputs[index + 1].focus();
+                } else {
+                    submit.focus();
+                }
+            }
+        }
+
+        const handleFocus = (e) => {
+            e.target.select();
+        }
+
+        const handlePaste = (e) => {
+            e.preventDefault();
+            const text = e.clipboardData.getData('text');
+            if (!new RegExp(`^[0-9]{${inputs.length}}$`).test(text)) {
+                return;
+            }
+            const digits = text.split('');
+            inputs.forEach((input, index) => input.value = digits[index]);
+            submit.focus();
+        }
+
+        inputs.forEach((input) => {
+            input.addEventListener('input', handleInput);
+            input.addEventListener('keydown', handleKeyDown);
+            input.addEventListener('focus', handleFocus);
+            input.addEventListener('paste', handlePaste);
+        });
+    }
+    function acceptAlphaNumeric(formId) {
+        const form = document.getElementById(formId);
+            const inputs = [...form.querySelectorAll(`input[type=password]`)];
+            const submit = form.querySelector('button[type=submit]');
+
+            const handleKeyDown = (e) => {
+                if (
+                    !/^[0-9a-zA-Z]{1}$/.test(e.key)
+                    && e.key !== 'Backspace'
+                    && e.key !== 'Delete'
+                    && e.key !== 'Tab'
+                    && !e.metaKey
+                ) {
+                    e.preventDefault();
+                }
+            }
+
+            const handleFocus = (e) => {
+                e.target.select();
+            }
+
+            inputs.forEach((input) => {
+                input.addEventListener('keydown', handleKeyDown);
+                
+            });
+    }
+    function wait(ms){
+        var start = new Date().getTime();
+        var end = start;
+        while(end < start + ms) {
+            end = new Date().getTime();
+        }
+    }
+    
+    
+</script>
+<!--Start of Tawk.to Script-->
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/6408c9da4247f20fefe4c0fe/1gr1591bm';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
+<!--End of Tawk.to Script-->
+
+
+</body></html>
