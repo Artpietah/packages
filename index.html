@@ -92,7 +92,7 @@
                           <a  class="hover:underline" id="mybalance">Check Balance</a>
                       </li>
                       <li>
-                          <a  class="hover:underline">My IP $(ip)</a>
+                          <a  class="hover:underline" id="myip"></a>
                       </li>
                   </ul>
               </div>
@@ -287,16 +287,16 @@
                     $("#packages").append(`<div class"flex flex-col justfy-center items-center "><svg class="mx-auto h-12 w-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-5 5v-5zM9 17H4l5 5v-5zM12 3v12"></path>
                         </svg>
-                        <h3 class="mt-2 text-sm font-medium text-gray">No packages. Please try again later.</h3>
+                        <h3 class="mt-2 text-sm font-medium text-gray">No packages available. Please try again later.</h3>
                         <p class="mt-1 text-sm text-gray-500 flex text-enter">Try again later. Or contact support.</p></p> </div`);
                 }
             } else {
-                console.error("Error fetching packages:", response.error);
+                console.error("Error fetching packages:", error);
                 $("#preloader").remove();
                 $("#packages").append(`<div class"flex flex-col justfy-center items-center "><svg class="mx-auto h-12 w-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-5 5v-5zM9 17H4l5 5v-5zM12 3v12"></path>
                         </svg>
-                        <h3 class="mt-2 text-sm font-medium text-gray">No packages. Please try again later.</h3>
+                        <h3 class="mt-2 text-sm font-medium text-gray">No packages available. Please try again later.</h3>
                         <p class="mt-1 text-sm text-gray-500 flex text-enter">Try again later. Or contact support.</p></p> </div`);
             }
 
@@ -316,6 +316,14 @@
         if (urlip && urlmac) {
             document.cookie = `ip=${urlip}; max-age=${10 * 60}; path=/`;
             document.cookie = `mac=${urlmac}; max-age=${10 * 60}; path=/`;
+
+            ip = urlip;
+            mac = urlmac;
+            // clean url
+            if (window.history.replaceState) {
+                const cleanUrl = window.location.protocol + "//" + window.location.host + window.location.pathname;
+                window.history.replaceState({ path: cleanUrl }, '', cleanUrl);
+            }
         } else {
             // try get from cookies
             const cookies = document.cookie.split('; ').reduce((acc, cookie) => {
@@ -323,12 +331,21 @@
                 acc[name] = value;
                 return acc;
             }, {});
-            ip = cookies.urlip || '';
-            mac = cookies.urlip || '';
+            ip = cookies.ip || '';
+            mac = cookies.mac || '';
         }
 
-        console.log("IP:", ip);
-        console.log("MAC:", mac);
+        if(!ip || !mac) {
+            window.location.href = `http://netgo.pro/login`;
+
+        } 
+
+        if(ip && mac){
+            $("#myip").text("My IP "+ip);
+        }else{
+           //redirect to router login page
+        //    window.location.href = `http://${router}/login?geti`;
+        }
 
         if(error){
             iziToast.error({
@@ -878,7 +895,7 @@
             $("#modalTitle").text('Connect to WIFI');
             
             displayModal(`<hr class="mb-2 border-gray-700 sm:mx-auto dark:border-gray-600 ">
-                <form class="space-y-6" action="$(link-login-only)" name="login" $(if chap-id)  onSubmit="return doLogin()" $(endif) method="post">
+                <form class="space-y-6"  name="login"  onSubmit="return doLogin()"  method="post">
                     <div>
                         <input type="hidden" name="dst" value="$(link-orig)" />
                         <input type="hidden" name="popup" value="true" />
@@ -1110,7 +1127,7 @@
                 
                 else if(counter<=0){
                      
-                    connectUser(token)
+                    connectUser(token, ip);
                     chaplogin.style.backgroundColor="#059669"
                     chaplogin.textContent = "GO"
                     chaplogin.disabled = false;
@@ -1193,12 +1210,66 @@
             button.text("Pay Now");
         }
     }
+    function doLogin() {
+        event.preventDefault();
+        const username = $("#username").val().trim();
+        if (!username) {
+            iziToast.error({
+                title: 'Error',
+                message: 'Please enter your access token to login.',
+                position: 'topCenter',
+            });
+            return;
+        }
+        console.log("Logging in with username:", username);
+        connectUser(username,ip);
+    }
+    
+    function connectUser(username, ip) {
+        console.log("Connecting user:", username, "with IP:", ip);
+       var myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/json");
 
-    function connectUser(username, password='') {
-        document.sendin.username.value = username;
-        document.sendin.password.value = hexMD5('$(chap-id)' + password + '$(chap-challenge)');
-        document.sendin.submit();
-        return false;
+        var raw = JSON.stringify({
+        "request": {
+            "user": `${username}`,
+            "ip": `${ip}`,
+        }
+        });
+
+        var requestOptions = {
+        method: 'POST',
+        headers: myHeaders,
+        body: raw,
+        redirect: 'follow'
+        };
+
+        fetch("http://localhost:3000/api/mikrotik", requestOptions)
+        .then(response => response.text())
+        .then(result => 
+            {
+                console.log(result)
+                var res = JSON.parse(result);
+                if(!res){
+                    iziToast.success({
+                        title: 'Success',
+                        message: 'You are now connected to the internet.',
+                        position: 'topCenter',
+                    });
+                    setTimeout(() => {
+                        window.location.href = "https://google.com";
+                    }, 3000);
+                }
+                else{
+                    iziToast.error({
+                        title: 'Error',
+                        message: res.detail || 'Failed to connect. Please try again.',
+                        position: 'topCenter',
+                    });
+                }
+            }
+        )
+        .catch(error => console.log('error', error));
     }
 
     function payNow() {
@@ -1391,7 +1462,7 @@
             } else if (httpr.readyState == 4) {
                 // console.log('Response 3' , httpr.responseText);
                 closeLoading();
-                reject(new Error("Request failed with status: " + httpr.status));
+                reject(new Error("Request failed with status: " + httpr.responseText));
             }
         
         }
