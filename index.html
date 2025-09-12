@@ -191,10 +191,461 @@
         });
    
     var mac, ip, baseURL, router, hotspot, description,contact, logo, background, copyright, terms, privacyPolicy, packages,CheckoutRequestID ,authtoken, userPhone,user,register, error;
-    $.getJSON("./pcks.json", function(data) {
-            packages = data || [];
-       });
-    $.getJSON("./config.json", function(data) {
+    
+    const data = {
+    "hotspot": {
+        "id": "65",
+        "name": "NETGOPRO",
+        "description": "NETGOPRO LAIKIPIA is a hotspot service provider offering reliable and fast internet connectivity. We provide various data packages to suit your needs, ensuring you stay connected anytime, anywhere.",
+        "contact": [
+            {
+                "type": "tel",
+                "value": "0716000034"
+            },
+            {
+                "type": "mailto",
+                "value": "info@netgopro.co.ke"
+            }
+        ],
+        "logo": "",
+        "background": "",
+        "terms": "By using this hotspot service, you agree to our terms and conditions. Please use the service responsibly and adhere to all applicable laws and regulations. Unauthorized access or misuse of the service is prohibited.",
+        "privacyPolicy": "",
+        "image": "./images/ngpsbg.png",
+        "packages": [
+    {
+        "id": "341",
+        "orgid": "111",
+        "rid": "*F",
+        "name": "Unlimited 3Hrs.",
+        "data_limit": "",
+        "data_limit_unit": "Unlimited",
+        "rate_limit": "5",
+        "rate_limit_unit": "M",
+        "servers": "all",
+        "shared_users": "1",
+        "on_login": null,
+        "on_logout": null,
+        "cost": "15",
+        "time_limit": "3",
+        "time_limit_unit": "Hours",
+        "custom_sms": "You have Unlimited Data valid 3Hrs..",
+        "router_state": null,
+        "system_state": "1",
+        "router": "65",
+        "offline_auth": "0",
+        "offline_file": "",
+        "created_at": "2024-08-27 04:22:15",
+        "updated_at": "2024-08-27 04:22:15"
+    },
+    {
+        "id": "342",
+        "orgid": "111",
+        "rid": "*10",
+        "name": "1GB + 200MB BONUS.",
+        "data_limit": "1200",
+        "data_limit_unit": "MB",
+        "rate_limit": "5",
+        "rate_limit_unit": "M",
+        "servers": "all",
+        "shared_users": "2",
+        "on_login": null,
+        "on_logout": null,
+        "cost": "20",
+        "time_limit": "10",
+        "time_limit_unit": "Hours",
+        "custom_sms": "You have 1.2GB Valid 10Hrs.",
+        "router_state": null,
+        "system_state": "1",
+        "router": "65",
+        "offline_auth": "0",
+        "offline_file": "",
+        "created_at": "2024-08-27 04:25:04",
+        "updated_at": "2024-08-27 04:25:04"
+    },
+    {
+        "id": "343",
+        "orgid": "111",
+        "rid": "*11",
+        "name": "1GB + 500MB BONUS.",
+        "data_limit": "1500",
+        "data_limit_unit": "MB",
+        "rate_limit": "5",
+        "rate_limit_unit": "M",
+        "servers": "all",
+        "shared_users": "2",
+        "on_login": null,
+        "on_logout": null,
+        "cost": "30",
+        "time_limit": "10",
+        "time_limit_unit": "Hours",
+        "custom_sms": "You have 1.5GB Valid 10Hrs.",
+        "router_state": null,
+        "system_state": "1",
+        "router": "65",
+        "offline_auth": "0",
+        "offline_file": "",
+        "created_at": "2024-08-27 04:25:41",
+        "updated_at": "2024-08-27 04:25:41"
+    },
+    {
+        "id": "344",
+        "orgid": "111",
+        "rid": "*12",
+        "name": "2GB Valid 6Hrs.",
+        "data_limit": "2",
+        "data_limit_unit": "GB",
+        "rate_limit": "5",
+        "rate_limit_unit": "M",
+        "servers": "all",
+        "shared_users": "2",
+        "on_login": null,
+        "on_logout": null,
+        "cost": "30",
+        "time_limit": "6",
+        "time_limit_unit": "Hours",
+        "custom_sms": "You have 2GB Valid 6Hrs.",
+        "router_state": null,
+        "system_state": "1",
+        "router": "65",
+        "offline_auth": "0",
+        "offline_file": "",
+        "created_at": "2024-08-27 04:26:34",
+        "updated_at": "2024-08-27 04:26:34"
+    },
+    {
+        "id": "345",
+        "orgid": "111",
+        "rid": "*13",
+        "name": "2GB Valid 10Hrs.",
+        "data_limit": "2",
+        "data_limit_unit": "GB",
+        "rate_limit": "5",
+        "rate_limit_unit": "M",
+        "servers": "all",
+        "shared_users": "2",
+        "on_login": null,
+        "on_logout": null,
+        "cost": "35",
+        "time_limit": "10",
+        "time_limit_unit": "Hours",
+        "custom_sms": "You have 2GB Valid 10Hrs.",
+        "router_state": null,
+        "system_state": "1",
+        "router": "65",
+        "offline_auth": "0",
+        "offline_file": "",
+        "created_at": "2024-08-27 04:27:07",
+        "updated_at": "2024-08-27 04:27:07"
+    },
+    {
+        "id": "346",
+        "orgid": "111",
+        "rid": "*14",
+        "name": "4GB Valid 24Hrs.",
+        "data_limit": "4",
+        "data_limit_unit": "GB",
+        "rate_limit": "5",
+        "rate_limit_unit": "M",
+        "servers": "all",
+        "shared_users": "2",
+        "on_login": null,
+        "on_logout": null,
+        "cost": "50",
+        "time_limit": "24",
+        "time_limit_unit": "Hours",
+        "custom_sms": "You have 4GB Valid 24Hrs.",
+        "router_state": null,
+        "system_state": "1",
+        "router": "65",
+        "offline_auth": "0",
+        "offline_file": "",
+        "created_at": "2024-08-27 04:28:07",
+        "updated_at": "2024-08-27 04:28:07"
+    },
+    {
+        "id": "347",
+        "orgid": "111",
+        "rid": "*15",
+        "name": "5GB Valid 5Days.",
+        "data_limit": "5",
+        "data_limit_unit": "GB",
+        "rate_limit": "5",
+        "rate_limit_unit": "M",
+        "servers": "all",
+        "shared_users": "2",
+        "on_login": null,
+        "on_logout": null,
+        "cost": "150",
+        "time_limit": "5",
+        "time_limit_unit": "Days",
+        "custom_sms": "You have 5GB Valid 5Days.",
+        "router_state": null,
+        "system_state": "1",
+        "router": "65",
+        "offline_auth": "0",
+        "offline_file": "",
+        "created_at": "2024-08-27 04:29:28",
+        "updated_at": "2024-08-27 04:29:28"
+    },
+    {
+        "id": "348",
+        "orgid": "111",
+        "rid": "*16",
+        "name": "10GB Valid 7Days.",
+        "data_limit": "10",
+        "data_limit_unit": "GB",
+        "rate_limit": "5",
+        "rate_limit_unit": "M",
+        "servers": "all",
+        "shared_users": "2",
+        "on_login": null,
+        "on_logout": null,
+        "cost": "200",
+        "time_limit": "7",
+        "time_limit_unit": "Days",
+        "custom_sms": "You have 10GB Valid 7Days.",
+        "router_state": null,
+        "system_state": "1",
+        "router": "65",
+        "offline_auth": "0",
+        "offline_file": "",
+        "created_at": "2024-08-27 04:30:57",
+        "updated_at": "2024-08-27 04:30:57"
+    },
+    {
+        "id": "349",
+        "orgid": "111",
+        "rid": "*17",
+        "name": "Unlimited 7Days.",
+        "data_limit": "",
+        "data_limit_unit": "Unlimited",
+        "rate_limit": "5",
+        "rate_limit_unit": "M",
+        "servers": "all",
+        "shared_users": "1",
+        "on_login": null,
+        "on_logout": null,
+        "cost": "300",
+        "time_limit": "7",
+        "time_limit_unit": "Days",
+        "custom_sms": "You have Unlimited Data Valid 7Days.",
+        "router_state": null,
+        "system_state": "1",
+        "router": "65",
+        "offline_auth": "0",
+        "offline_file": "",
+        "created_at": "2024-08-27 04:33:02",
+        "updated_at": "2024-08-27 04:33:02"
+    },
+    {
+        "id": "350",
+        "orgid": "111",
+        "rid": "*18",
+        "name": "Unlimited 30Days.",
+        "data_limit": "",
+        "data_limit_unit": "Unlimited",
+        "rate_limit": "5",
+        "rate_limit_unit": "M",
+        "servers": "all",
+        "shared_users": "1",
+        "on_login": null,
+        "on_logout": null,
+        "cost": "900",
+        "time_limit": "30",
+        "time_limit_unit": "Days",
+        "custom_sms": "You have Unlimited Data Valid 30Days",
+        "router_state": null,
+        "system_state": "1",
+        "router": "65",
+        "offline_auth": "0",
+        "offline_file": "",
+        "created_at": "2024-08-27 04:33:52",
+        "updated_at": "2024-08-27 04:33:52"
+    },
+    {
+        "id": "351",
+        "orgid": "111",
+        "rid": "*19",
+        "name": "30GB valid 30Days.",
+        "data_limit": "30",
+        "data_limit_unit": "GB",
+        "rate_limit": "5",
+        "rate_limit_unit": "M",
+        "servers": "all",
+        "shared_users": "2",
+        "on_login": null,
+        "on_logout": null,
+        "cost": "800",
+        "time_limit": "30",
+        "time_limit_unit": "Days",
+        "custom_sms": "You have 30GB valid 30Days.",
+        "router_state": null,
+        "system_state": "1",
+        "router": "65",
+        "offline_auth": "0",
+        "offline_file": "",
+        "created_at": "2024-08-27 04:36:37",
+        "updated_at": "2024-08-27 04:36:37"
+    },
+    {
+        "id": "352",
+        "orgid": "111",
+        "rid": "*1A",
+        "name": "500MB Valid 24Hrs.",
+        "data_limit": "500",
+        "data_limit_unit": "MB",
+        "rate_limit": "5",
+        "rate_limit_unit": "M",
+        "servers": "all",
+        "shared_users": "2",
+        "on_login": null,
+        "on_logout": null,
+        "cost": "10",
+        "time_limit": "24",
+        "time_limit_unit": "Hours",
+        "custom_sms": "You have 500MB valid 24Hrs",
+        "router_state": null,
+        "system_state": "1",
+        "router": "65",
+        "offline_auth": "0",
+        "offline_file": "",
+        "created_at": "2024-08-27 09:31:14",
+        "updated_at": "2024-08-27 09:31:14"
+    },
+    {
+        "id": "353",
+        "orgid": "111",
+        "rid": "*1B",
+        "name": "Unlimited 24Hrs.",
+        "data_limit": "",
+        "data_limit_unit": "Unlimited",
+        "rate_limit": "5",
+        "rate_limit_unit": "M",
+        "servers": "all",
+        "shared_users": "1",
+        "on_login": null,
+        "on_logout": null,
+        "cost": "60",
+        "time_limit": "24",
+        "time_limit_unit": "Hours",
+        "custom_sms": "You have Unlimited Data valid 24Hrs.",
+        "router_state": null,
+        "system_state": "1",
+        "router": "65",
+        "offline_auth": "0",
+        "offline_file": "",
+        "created_at": "2024-08-27 09:33:27",
+        "updated_at": "2024-08-27 09:33:27"
+    },
+    {
+        "id": "354",
+        "orgid": "111",
+        "rid": "*1E",
+        "name": "5GB valid 24Hrs.",
+        "data_limit": "5",
+        "data_limit_unit": "GB",
+        "rate_limit": "5",
+        "rate_limit_unit": "M",
+        "servers": "all",
+        "shared_users": "2",
+        "on_login": null,
+        "on_logout": null,
+        "cost": "55",
+        "time_limit": "24",
+        "time_limit_unit": "Hours",
+        "custom_sms": "You have 5GB valid 24Hrs.",
+        "router_state": null,
+        "system_state": "1",
+        "router": "65",
+        "offline_auth": "0",
+        "offline_file": "",
+        "created_at": "2024-08-27 09:35:36",
+        "updated_at": "2024-08-27 09:35:36"
+    },
+    {
+        "id": "355",
+        "orgid": "111",
+        "rid": "*1E",
+        "name": "PREMIUM 10MBPS",
+        "data_limit": "",
+        "data_limit_unit": "Unlimited",
+        "rate_limit": "10",
+        "rate_limit_unit": "M",
+        "servers": "all",
+        "shared_users": "1",
+        "on_login": null,
+        "on_logout": null,
+        "cost": "100",
+        "time_limit": "24",
+        "time_limit_unit": "Hours",
+        "custom_sms": "Thank you for subscribing to Premium 10Mbps Internet valid 24Hrs.",
+        "router_state": null,
+        "system_state": "1",
+        "router": "65",
+        "offline_auth": "0",
+        "offline_file": "",
+        "created_at": "2024-11-17 06:24:02",
+        "updated_at": "2024-11-17 06:24:02"
+    },
+    {
+        "id": "357",
+        "orgid": "111",
+        "rid": "*21",
+        "name": "Unlimited 45Minutes",
+        "data_limit": "",
+        "data_limit_unit": "Unlimited",
+        "rate_limit": "5",
+        "rate_limit_unit": "M",
+        "servers": "all",
+        "shared_users": "1",
+        "on_login": null,
+        "on_logout": null,
+        "cost": "5",
+        "time_limit": "45",
+        "time_limit_unit": "Minutes",
+        "custom_sms": "You have Unlimited Data Valid 45 Minutes.",
+        "router_state": null,
+        "system_state": "1",
+        "router": "65",
+        "offline_auth": "0",
+        "offline_file": "",
+        "created_at": "2025-02-14 00:34:59",
+        "updated_at": "2025-02-14 00:34:59"
+    },
+    {
+        "id": "358",
+        "orgid": "111",
+        "rid": "*22",
+        "name": "2Hrs Unlimited",
+        "data_limit": "",
+        "data_limit_unit": "Unlimited",
+        "rate_limit": "5",
+        "rate_limit_unit": "M",
+        "servers": "all",
+        "shared_users": "1",
+        "on_login": null,
+        "on_logout": null,
+        "cost": "10",
+        "time_limit": "2",
+        "time_limit_unit": "Hours",
+        "custom_sms": "You have Unlimited Data valid 2Hrs.",
+        "router_state": null,
+        "system_state": "1",
+        "router": "65",
+        "offline_auth": "0",
+        "offline_file": "",
+        "created_at": "2025-05-10 10:25:39",
+        "updated_at": "2025-05-10 10:25:39"
+    }
+]
+    },
+    "baseURL" :"https://laikipia.netgopro.co.ke/v7",
+    "router": 45,
+    "version": "1.0.0"
+
+};
+    
         router = data.hotspot.id;
         baseURL =data.baseURL;
         hotspot = data.hotspot.name;
@@ -206,17 +657,12 @@
         terms = data.hotspot.terms;
         privacyPolicy = data.hotspot.privacyPolicy;
         
-
+        packages = data.hotspot.packages;
         
         packageImage = data.hotspot.image;
        
         $("title , #hotspot").text(hotspot);
-        
-        console.log("Url:", baseURL);
-         
-        
-
-        
+                
         if (logo) {
             $("#logo").attr("src", logo);
         } else {
@@ -252,13 +698,11 @@
                             Loading...
                         </div>`);
        
-          
             if (packages) {
-                console.log(packages);
+                
                 packages = packages.sort((a, b) => {return a.cost - b.cost;}) || [];
                 
                 if(packages && packages.length > 0) {
-                    //   console.log(packages);
                     packages.map(function(package) {
                         $("#preloader").remove();
                         $("#packages").append(`
@@ -291,7 +735,7 @@
                         <p class="mt-1 text-sm text-gray-500 flex text-enter">Try again later. Or contact support.</p></p> </div`);
                 }
             } else {
-                console.error("Error fetching packages:", error);
+               
                 $("#preloader").remove();
                 $("#packages").append(`<div class"flex flex-col justfy-center items-center "><svg class="mx-auto h-12 w-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-5 5v-5zM9 17H4l5 5v-5zM12 3v12"></path>
@@ -304,7 +748,7 @@
             
         
         
-    });
+    
     
     $(document).ready(function() {
         //get url params    
@@ -314,8 +758,8 @@
         error = urlParams.get('error') || '';
         // set cookies with 10min expiry
         if (urlip && urlmac) {
-            document.cookie = `ip=${urlip}; max-age=${10 * 60}; path=/`;
-            document.cookie = `mac=${urlmac}; max-age=${10 * 60}; path=/`;
+            document.cookie = `ip=${urlip}; max-age=${15 * 60}; path=/`;
+            document.cookie = `mac=${urlmac}; max-age=${15 * 60}; path=/`;
 
             ip = urlip;
             mac = urlmac;
@@ -354,7 +798,7 @@
                 position: 'topCenter',
                 // close: true,
             });
-            // console.log(error)
+           
         }
      
         $("#connect").click(function() {
@@ -405,11 +849,11 @@
            
             var package = packages.find(pkg => pkg.id === packageId.toString());
             if (!package) {
-                console.error("Package not found:", packageId);
+               
                 return;
             }
             // Display package details or redirect to payment page
-            // console.log("Selected Package:", package);
+            
             packageDetails(package)
             // You can also redirect to a payment page or display more details in a modal
             
@@ -426,7 +870,7 @@
                 }
                  RequestOTP(userPhone)
                     .then(response => {
-                        console.log("OTP response:", response);
+                        
                         if (response.status === 'success') {
                             authtoken = response.authtoken;
                             iziToast.success({
@@ -444,7 +888,7 @@
                         }
                     })
                     .catch(error => {
-                        console.error("Error requesting OTP:", error);
+                        
                         iziToast.error({
                             title: 'Error',
                             message: 'Failed to send OTP code. Please try again later.',
@@ -512,7 +956,7 @@
                                      
                                 }).catch(error => {
                                     createAccount();
-                                    console.error("Error registering user:", error);
+                            
                                     iziToast.error({
                                         title: 'Error',
                                         message: 'Failed to register user. Please try again later.',
@@ -533,7 +977,7 @@
                             });
                         }
                     }).catch(error => {
-                        console.error("Error verifying OTP:", error);
+                        
                         iziToast.error({
                             title: 'Error',
                             message: 'Invalid OTP Code.',
@@ -590,7 +1034,7 @@
                             });
                         }
                     }).catch(error => {
-                        console.error("Authenticating User:", error);
+                        
                         iziToast.error({
                             title: 'Error',
                             message: error.message || 'Invalid phone or PIN Code.',
@@ -622,7 +1066,7 @@
                 register = false;
                  RequestOTP(userPhone)
                  .then(response => {
-                    console.log("OTP response:", response);
+                    
                     if (response.status === 'success') {
                         authtoken = response.authtoken;
                         iziToast.success({
@@ -640,7 +1084,7 @@
                     }
                 })
                  .catch(error => {
-                    console.error("Error requesting OTP:", error);
+                    
                     iziToast.error({
                         title: 'Error',
                         message: 'Failed to send OTP code. Please try again later.',
@@ -708,7 +1152,7 @@
                     } else {
                         RequestOTP(mobilenumber)
                                     .then(response => {
-                                        console.log("OTP response:", response);
+                                        
                                         if (response.status === 'success') {
                                             userPhone = mobilenumber; // Store user phone for later use
                                             authtoken = response.authtoken; // Store auth token for OTP verification
@@ -727,7 +1171,7 @@
                                         }
                                     })
                                     .catch(error => {
-                                        console.error("Error requesting OTP:", error);
+                                       
                                         iziToast.error({
                                             title: 'Error',
                                             message: 'Failed to send OTP code. Please try again later.',
@@ -736,7 +1180,7 @@
                                     });
                         }
                 }).catch(error => {
-                    console.error("Error checking user existence:", error);
+                    
                     iziToast.error({
                         title: 'Error',
                         message: error.message || 'Failed to check user existence. Please try again later.',
@@ -791,7 +1235,7 @@
                         });
                     }
                 }).catch(error => {
-                    console.error("Error resetting PIN:", error);
+                    
                     iziToast.error({
                         title: 'Error',
                         message: 'Failed to reset PIN. Please try again later.',
@@ -886,7 +1330,7 @@
                 </div>
                         
             `);
-              console.log("Selected Package:", package);
+             
             
         }  
         
@@ -1109,7 +1553,7 @@
                        
                     <code class="text-purple-500 dark:text-purple-400 text-center"> ${token} </code>
                     <p class="text-center mb-4 text-sm font-normal text-gray-500 dark:text-gray-400">If nothing happens click GO</p>
-                    <button id="chaplogin"  type="button" onclick="console.log('clocked')" class="mb-2 flex justify-center text-white bg-green-600  focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-100 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center ">
+                    <button id="chaplogin"  type="button"  class="mb-2 flex justify-center text-white bg-green-600  focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-100 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center ">
                        Connecting ...
                     </button>
                 </div>
@@ -1135,7 +1579,6 @@
                     return
                 }
                 counter--;
-                console.log(`Connecting in ${counter}s`)
                 chaplogin.textContent = `Connecting in ${counter}s`
             },1000)
         }
@@ -1221,12 +1664,10 @@
             });
             return;
         }
-        console.log("Logging in with username:", username);
         connectUser(username,ip);
     }
     
     function connectUser(username, ip) {
-        console.log("Connecting user:", username, "with IP:", ip);
        var myHeaders = new Headers();
         myHeaders.append("Content-Type", "application/json");
 
@@ -1248,7 +1689,7 @@
         .then(response => response.text())
         .then(result => 
             {
-                console.log(result)
+            
                 var res = JSON.parse(result);
                 if(!res){
                     iziToast.success({
@@ -1269,7 +1710,9 @@
                 }
             }
         )
-        .catch(error => console.log('error', error));
+        .catch(error => {
+            // console.log('error', error)
+        });
     }
 
     function payNow() {
@@ -1299,7 +1742,7 @@
             });
             return;
         }
-         console.log("pay now clicked with phone:", phone, "and package id:", selected);
+
         // Make an API request to the server to initiate payment
         ApiRequest(`${baseURL}/api.php`, 
             {
@@ -1309,7 +1752,7 @@
         }
         )
             .then(response => {
-                // console.log("Payment initiated successfully:", response);
+
                 iziToast.success({
                     title: 'Success',
                     message: response.message,
@@ -1317,20 +1760,19 @@
                 });
                 // create a transaction status checker
                 CheckoutRequestID = response.CheckoutRequestID;
-                // console.log("CheckoutRequestID:", CheckoutRequestID);
                     var counter = 5;
                     const interval = setInterval(() => {
-                        // if (counter<=0){
-                        //     iziToast.info({
-                        //         title: 'Timeout',
-                        //         message: 'Checkout timeout.',
-                        //         position: 'topCenter',
-                        //     });
-                        //     clearInterval(interval);
-                        //     toggleButtonState(paybutton, 'default');
-                        //     closeLoading();
+                        if (counter<=0){
+                            iziToast.info({
+                                title: 'Timeout',
+                                message: 'Checkout timeout. Please try again. if your payment was successful, you can login using your mpesa transaction reference or contact support for further assistance.',
+                                position: 'topCenter',
+                            });
+                            clearInterval(interval);
+                            toggleButtonState(paybutton, 'default');
+                            closeLoading();
                         
-                        // }
+                        }
 
                         ApiRequest(`${baseURL}/api.php`, 
                             {
@@ -1339,7 +1781,7 @@
                             }
                         )
                         .then(statusResponse => {
-                            console.log("Payment status->>>:", statusResponse);
+                            
                             if (statusResponse.status === "success") {
                                 iziToast.success({
                                     title: `Success`,
@@ -1358,7 +1800,7 @@
                                 clearInterval(interval);
                                
                             } else if (statusResponse.status === "processing") {
-                                console.log("Payment is still processing...", statusResponse);
+                                
                                 // Optionally, you can show a toast or update UI to indicate processing state
                                 
                             } else {
@@ -1374,7 +1816,7 @@
                         })
                         .catch(error => {
                             toggleButtonState(paybutton, 'default');
-                            console.error("Error checking payment status:", error);
+                          
                             iziToast.error({
                                 title: 'Error',
                                 message: error.message || 'An error occurred while checking payment status.',
@@ -1388,7 +1830,7 @@
             })
             .catch(error => {
                 toggleButtonState(paybutton, 'default');
-                // console.error("Error initiating payment:", error);
+                
                 iziToast.error({
                     title: 'Error',
                     message: error.message || 'An error occurred while initiating payment.',
@@ -1419,7 +1861,6 @@
          jsonData.mac = mac;
          jsonData.ip = ip;
          jsonData.router = router;
-        console.log(jsonData);
         if(jsonData.action == "packages" ){
            
         }
@@ -1439,7 +1880,7 @@
                     if (response.status === "success") {
                         jsonData.action== "initiatePayment" ? null : closeLoading();
                         resolve(response);
-                        //  console.log('success' , httpr.responseText);
+                        
                     }
                     else if (response.status === "processing") {
                         resolve(response);
@@ -1452,15 +1893,15 @@
                      else {
                         closeLoading();
                         reject(new Error(response.message || "An error occurred"));
-                        //  console.log('Response 1' , httpr.responseText);
+                       
                     }
                 } catch (e) {
                     closeLoading();
                     reject(new Error("Invalid JSON response"));
-                    // console.log('Response 2' , httpr.responseText);
+                    
                 }
             } else if (httpr.readyState == 4) {
-                // console.log('Response 3' , httpr.responseText);
+                
                 closeLoading();
                 reject(new Error("Request failed with status: " + httpr.responseText));
             }
@@ -1549,7 +1990,6 @@
         }
         function showBalance(data) {
             $("#modalTitle").text(data?data.token : 'Balance info');
-            console.log(data);
             
             confetti()
             displayModal(`
@@ -1623,7 +2063,6 @@
             }
         )
         .then(response => {
-            console.log("Balance check successful:", response);
             iziToast.success({
                 title: 'Success',
                 message: response.message || 'Balance retrieved successfully.',
@@ -1633,7 +2072,7 @@
             showBalance(response);
         })
         .catch(error => {
-            console.error("Error checking balance:", error);
+       
             iziToast.error({
                 title: 'Error',
                 message: error.message || 'An error occurred while checking balance.',
