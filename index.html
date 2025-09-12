@@ -1563,24 +1563,26 @@
             const chaplogin = document.getElementById("chaplogin")
             chaplogin.style.backgroundColor="#4b5563"
             chaplogin.disabled = true;
-            var counter = 5;
-            setInterval(()=>{
-                if(counter ==1 ){
+            var counter = 10;
+            const retry = setInterval(()=>{
+                if(counter ==2 ){
                     confetti();
                 }
                 
                 else if(counter<=0){
-                     
                     connectUser(token, ip);
                     chaplogin.style.backgroundColor="#059669"
                     chaplogin.textContent = "GO"
                     chaplogin.disabled = false;
-                    clearInterval();
+                    clearInterval(retry);
                     return
                 }
                 counter--;
                 chaplogin.textContent = `Connecting in ${counter}s`
             },1000)
+            $("#chaplogin").on("click", function() {
+                connectUser(token, ip);
+            });
         }
      const section = document.getElementById("section");
     function blur(){
