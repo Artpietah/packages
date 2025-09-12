@@ -1581,7 +1581,6 @@
                 chaplogin.textContent = `Connecting in ${counter}s`
             },1000)
             $("#chaplogin").on("click", function() {
-                displayLoading(content='Please wait...')
                 connectUser(token, ip);
             });
         }
@@ -1694,19 +1693,10 @@
             {
             
                 var res = JSON.parse(result);
-                if(!res){
-                    closeLoading();
-                    iziToast.success({
-                        title: 'Success',
-                        message: 'You are now connected to the internet.',
-                        position: 'topCenter',
-                    });
-                    setTimeout(() => {
-                        window.location.href = "https://google.com";
-                    }, 3000);
+                if(res.length ==0){
+                    window.location.href = "https://google.com";
                 }
                 else{
-                    closeLoading();
                     iziToast.error({
                         title: 'Error',
                         message: res.detail || 'Failed to connect. Please try again.',
