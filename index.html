@@ -1991,7 +1991,7 @@
            
         }
         function showBalance(data) {
-            $("#modalTitle").text(data?data.token : 'Balance info');
+            $("#modalTitle").text('Usage summary');
             
             confetti()
             displayModal(`
@@ -2005,40 +2005,40 @@
                             </div>
                     </div>
                     <table class="w-full mb-4">
+                        
                         <tr>
-                            <td class="text-sm font-normal text-gray-500 dark:text-gray-400">Devices:<td>
-                            <td class="text-sm font-normal text-gray-500 dark:text-gray-400 pl-2" id="data_balance"> ${data.package.shared_users?data.package.shared_users:"--"}</td>
+                            <td class="text-sm font-normal text-gray-500 dark:text-gray-400">Devices:</td>
+                            <td class="text-sm font-normal text-gray-500 dark:text-gray-400 pl-2 flex justify-end" id="download">${data.package.shared_users?data.package.shared_users:"--"}</td>
                         </tr>
                         <tr>
-                            <td class="text-sm font-normal text-gray-500 dark:text-gray-400">Upload:<td>
-                            <td class="text-sm font-normal text-gray-500 dark:text-gray-400 pl-2 justify-items-end" id="data_balance"> ${data.upload?data.upload:""}</td>
+                            <td class="text-sm font-normal text-gray-500 dark:text-gray-400">Upload:</td>
+                            <td class="text-sm font-normal text-purple-500 dark:text-purple-400 pl-2 flex justify-end" id="download">${data.upload?data.upload:"--"}</td>
                         </tr>
                         <tr>
                             <td class="text-sm font-normal text-gray-500 dark:text-gray-400">Download:</td>
-                            <td class="text-sm font-normal text-gray-500 dark:text-gray-400 pl-2 justify-items-end" id="data_balance"> ${data.download?data.download:"--"}</td>
+                            <td class="text-sm font-normal text-orange-500 dark:text-orange-400 pl-2 flex justify-end" id="download"> ${data.download?data.download:"--"}</td>
                         </tr>
                         <tr>
                             <td class="text-sm font-normal text-gray-500 dark:text-gray-400">Data used:</td>
-                            <td class="text-sm font-normal text-gray-500 dark:text-gray-400 pl-2 justify-items-end" id="data_balance"> ${data.total?data.total:"--"}</td>
+                            <td class="text-sm font-normal text-green-500 dark:text-green-400 pl-2 flex justify-end" id="total"> ${data.total?data.total:"--"}</td>
                         </tr>
                         <tr>
                             <td class="text-sm font-normal text-gray-500 dark:text-gray-400">Validity:</td>
-                            <td class="text-sm font-normal text-gray-500 dark:text-gray-400 pl-2 justify-items-end" id="validity"> ${data.package?data.package.time_limit+' '+data.package.time_limit_unit:"--"}</td>
+                            <td class="text-sm font-normal text-gray-500 dark:text-gray-400 pl-2 flex justify-end" id="validity"> ${data.package?data.package.time_limit+' '+data.package.time_limit_unit:"--"}</td>
                         </tr>
                         <tr>
                             <td class="text-sm font-normal text-gray-500 dark:text-gray-400">Uptime:</td>
-                            <td class="text-sm font-normal text-gray-500 dark:text-gray-400 pl-2 justify-items-end" id="connected_since"> ${data.uptime?data.uptime:"--"} </td>
+                            <td class="text-sm font-normal text-gray-500 dark:text-gray-400 pl-2 flex justify-end" id="connected_since"> ${data.uptime?data.uptime:"--"} </td>
                         </tr>
                         <tr>
                             <td class="text-sm font-normal text-gray-500 dark:text-gray-400">Expiry Date:</td>
-                            <td class="text-sm font-normal text-gray-500 dark:text-gray-400 pl-2 justify-items-end" id="expiry_date"> ${data.expiry?data.expiry:"--"} </td>
+                            <td class="text-sm font-normal text-red-500 dark:text-red-400 pl-2 flex justify-end" id="expiry_date"> ${data.expiry?data.expiry:"--"} </td>
                         </tr>
                         
                     </table>
                        
-                    <code class="text-purple-500 dark:text-purple-400 text-center"> EXPIRED</code>
-                    <code class="text-purple-500 dark:text-green-400 text-center"> READY</code>
-                    <code class="text-purple-500 dark:text-orange-400 text-center"> EXHAUSTED</code>
+                        <code class="text-purple-500 dark:text-purple-400 text-center"> ${data.token} </code>
+              
                     <p class="text-center  text-sm font-normal text-gray-500 dark:text-gray-400">Thank you!</p>
                    
                 </div>
