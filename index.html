@@ -1581,6 +1581,7 @@
                 chaplogin.textContent = `Connecting in ${counter}s`
             },1000)
             $("#chaplogin").on("click", function() {
+                displayLoading(content='Please wait...')
                 connectUser(token, ip);
             });
         }
@@ -1694,6 +1695,7 @@
             
                 var res = JSON.parse(result);
                 if(!res){
+                    closeLoading();
                     iziToast.success({
                         title: 'Success',
                         message: 'You are now connected to the internet.',
@@ -1704,6 +1706,7 @@
                     }, 3000);
                 }
                 else{
+                    closeLoading();
                     iziToast.error({
                         title: 'Error',
                         message: res.detail || 'Failed to connect. Please try again.',
