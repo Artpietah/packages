@@ -8,6 +8,7 @@
     <script src="./js/tailwind.js"></script>
     <link rel="stylesheet" type="text/css" href="./css/mycustom.css">
     <link rel="stylesheet" type="text/css" href="./css/iziToast.min.css"> 
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
     <script src="./js/iziToast.min.js" type="text/javascript"></script>  
 </head>
 <body class="grotesk relative bg-gray-200 dark:bg-gray-900 text-gray-900  dark:text-gray-200 ">
@@ -1538,6 +1539,7 @@
         
     });
     function successPayment(token) {
+            closeLoading();
             $("#modalTitle").text('Purchase Successful');
             confetti()
             displayModal(`
@@ -1624,6 +1626,22 @@
             
         });
     }
+    function showToastfy(message, type='info') {
+        Toastify({
+            className: type,
+            text: message,
+            duration: 10000,
+            newWindow: true,
+            close: true,
+            gravity: "top", // `top` or `bottom`
+            position: "center", // `left`, `center` or `right`
+            stopOnFocus: true,
+            style: {
+                background: type === 'success' ? "linear-gradient(to right, #00b09b, #96c93d)" : type === 'error' ? "linear-gradient(to right, #ff5f6d, #ffc371)" : "linear-gradient(to right, #2193b0, #6dd5ed)",
+            },
+                    
+        }).showToast();
+    }
     function closeLoading() {
         iziToast.destroy({ id: 'loadingToast' });
     }
@@ -1670,45 +1688,7 @@
     }
     
     function connectUser(username, ip) {
-       var myHeaders = new Headers();
-        myHeaders.append("Content-Type", "application/json");
-
-        var raw = JSON.stringify({
-        "request": {
-            "user": `${username}`,
-            "ip": `${ip}`,
-        }
-        });
-
-        var requestOptions = {
-        method: 'POST',
-        headers: myHeaders,
-        body: raw,
-        redirect: 'follow'
-        };
-
-        fetch("http://localhost:3000/api/hotspot/login", requestOptions)
-        .then(response => response.text())
-        .then(result => 
-            {
-            
-                var res = JSON.parse(result);
-                console.log(res);
-                if(res.length ==0){
-                    window.location.href = "https://google.com";
-                }
-                else{
-                    iziToast.error({
-                        title: 'Error',
-                        message: res.detail || 'Failed to connect. Please try again.',
-                        position: 'topCenter',
-                    });
-                }
-            }
-        )
-        .catch(error => {
-            // console.log('error', error)
-        });
+      window.location.href = "https://google.com"
     }
 
     function payNow() {
@@ -1738,7 +1718,20 @@
             });
             return;
         }
-
+        //try yo checkif user has already purchased a package in the last five minutes
+        const recentPurchased = document.cookie.split('; ').find(row => row.startsWith('recentPurchased='));
+        if (recentPurchased) {
+            const packageId = recentPurchased.split('=')[1];
+            if (packageId === selected) {
+                toggleButtonState(paybutton, 'default');
+                iziToast.info({
+                    title: 'Info',
+                    message: 'A transaction is underway. Please wait a few minutes before trying again.',
+                    position: 'topCenter',
+                });
+                return;
+            }
+        }
         // Make an API request to the server to initiate payment
         ApiRequest(`${baseURL}/initiate-payment`, 
             {
@@ -1756,18 +1749,14 @@
                 });
                 // create a transaction status checker
                 CheckoutRequestID = response.CheckoutRequestID;
-                    var counter = 5;
+                    var counter = 5; // Number of attempts (5 minutes)
                     const interval = setInterval(() => {
 
                         if (counter<=0){
-                            iziToast.error({
-                                title: 'Timeout',
-                                message: 'Checkout timeout. Please try again. if your payment was successful, you can login using your mpesa transaction reference or contact support for further assistance.',
-                                position: 'topCenter',
-                            });
-                            clearInterval(interval);
+                           showToastfy('Transaction timed out. Please try again.', 'error');
                             toggleButtonState(paybutton, 'default');
                             closeLoading();
+                            clearInterval(interval);
                         
                         }
 
@@ -1777,47 +1766,36 @@
                             }, "GET"
                         )
                         .then(statusResponse => {
-                            console.log(selected)
+                           
                             if (statusResponse.status === 1) {
-                                iziToast.success({
-                                    title: `Success`,
-                                    message: "Your payment was successful. Connecting you in a few seconds...",
-                                    position: 'topCenter',
-                                });
-                                   
+                                // set cokies to prenet purchasing packages untill 5minutes
+                                document.cookie = `recentPurchased=${selected}; max-age=${5 * 60}; path=/`;
 
-                                successPayment(statusResponse.token);
-                                confetti({
-                                            particleCount: 100,
-                                            spread: 70,
-                                            origin: { y: 0.6 },
-                                        });
+                                successPayment(statusResponse.receipt);
                                
                                 clearInterval(interval);
                                
                             } else if (statusResponse.status === 0) {
-                                
-                                // Optionally, you can show a toast or update UI to indicate processing state
+                                if(statusResponse.message!="Processing ..."){
+                                    
+                                    showToastfy(statusResponse.message || 'Payment failed or was cancelled. Please try again.', 'error');
+                                    closeLoading();
+                                    toggleButtonState(paybutton, 'default');
+                                    clearInterval(interval);
+
+                                } 
                                 
                             } else {
+                                
+                                showToastfy(statusResponse.message || 'Unable to initiate payment.', 'error');
                                 toggleButtonState(paybutton, 'default');
-                                iziToast.error({
-                                    title: 'Payment Failed',
-                                    message: statusResponse.message || 'An error occurred while processing the payment.',
-                                    position: 'topCenter',
-                                });
                                 clearInterval(interval);
                             }
                             
                         })
                         .catch(error => {
                             toggleButtonState(paybutton, 'default');
-                          
-                            iziToast.error({
-                                title: 'Error',
-                                message: error.message || 'An error occurred while checking payment status.',
-                                position: 'topCenter',
-                            });
+                            showToastfy((error.message || 'An error occurred while checking payment status.'), 'error');
                             clearInterval(interval);
                         });
 
@@ -1854,7 +1832,6 @@
                     });  
     }
     function ApiRequest(url, jsonData,method="POST") {
-        console.log(jsonData);
          jsonData.mac = mac;
          jsonData.ip = ip;
          jsonData.routerId = router;
@@ -1874,35 +1851,36 @@
             if (httpr.readyState == 4 && httpr.status == 200) {
                 try {
                     var response = JSON.parse(httpr.responseText);
-                    if (response.status === "success") {
-                        jsonData.action== "initiatePayment" ? null : closeLoading();
-                        console.log(response)
+                    if (response.status === "success" ) {
+                        jsonData.action== "initiate-payment" ? null : closeLoading();
                         resolve(response);
                         
                     }
-                    else if (response.status === 0) {
-                        console.log(response)
+                    else if (response.status === 0 || response.status === 1) {
                         resolve(response);
                        
                     }
+                    
                     else if (response.status === "userNotFound") {
                         resolve(response);
                        
                     }
+                    else if (jsonData.action== "user-balance") {
+                        resolve(response.data);
+
+                       
+                    }
                      else {
-                        console.log(response)
                         closeLoading();
                         reject(new Error(response.message || "An error occurred"));
                        
                     }
                 } catch (e) {
-                    console.log(e)
                     closeLoading();
                     reject(new Error("Invalid JSON response"));
                     
                 }
             } else if (httpr.readyState == 4) {
-                console.log(httpr.responseText)
                 closeLoading();
                 reject(new Error("Request failed with status: " + httpr.responseText));
             }
@@ -1994,13 +1972,14 @@
            
         }
         function showBalance(data) {
+            closeLoading();
             $("#modalTitle").text('Usage summary');
             
             confetti()
             displayModal(`
                 <hr class="mb-4 border-gray-700 sm:mx-auto dark:border-gray-600 ">
                 <div class="flex justify-center  flex-col">
-                     <h3 class="text-center text-lg font-semibold  text-gray-900 dark:text-white">${data.package.name}</h3>
+                     <h3 class="text-center text-lg font-semibold  text-gray-900 dark:text-white">${data.user.profile}</h3>
                      <div id="qrcode" class="flex w-full mb-4">
                             <div class="h-15 flex justify-center w-full   p-4 ">
                                
@@ -2009,10 +1988,6 @@
                     </div>
                     <table class="w-full mb-4">
                         
-                        <tr>
-                            <td class="text-sm font-normal text-gray-500 dark:text-gray-400">Devices:</td>
-                            <td class="text-sm font-normal text-gray-500 dark:text-gray-400 pl-2 flex justify-end" id="download">${data.package.shared_users?data.package.shared_users:"--"}</td>
-                        </tr>
                         <tr>
                             <td class="text-sm font-normal text-gray-500 dark:text-gray-400">Upload:</td>
                             <td class="text-sm font-normal text-purple-500 dark:text-purple-400 pl-2 flex justify-end" id="download">${data.upload?data.upload:"--"}</td>
@@ -2025,13 +2000,10 @@
                             <td class="text-sm font-normal text-gray-500 dark:text-gray-400">Data used:</td>
                             <td class="text-sm font-normal text-green-500 dark:text-green-400 pl-2 flex justify-end" id="total"> ${data.total?data.total:"--"}</td>
                         </tr>
-                        <tr>
-                            <td class="text-sm font-normal text-gray-500 dark:text-gray-400">Validity:</td>
-                            <td class="text-sm font-normal text-gray-500 dark:text-gray-400 pl-2 flex justify-end" id="validity"> ${data.package?data.package.time_limit+' '+data.package.time_limit_unit:"--"}</td>
-                        </tr>
+                        
                         <tr>
                             <td class="text-sm font-normal text-gray-500 dark:text-gray-400">Uptime:</td>
-                            <td class="text-sm font-normal text-gray-500 dark:text-gray-400 pl-2 flex justify-end" id="connected_since"> ${data.uptime?data.uptime:"--"} </td>
+                            <td class="text-sm font-normal text-gray-500 dark:text-gray-400 pl-2 flex justify-end" id="connected_since"> ${data.user.uptime?data.user.uptime:"--"} </td>
                         </tr>
                         <tr>
                             <td class="text-sm font-normal text-gray-500 dark:text-gray-400">Expiry Date:</td>
@@ -2039,7 +2011,9 @@
                         </tr>
                         
                     </table>
-                       
+                    <div class="flex justify-center w-full mb-4 border border-gray-300 pt-4 rounded-lg">
+                        <p class="text-center mb-4 text-sm font-normal text-gray-500 dark:text-gray-400"> ${data.user.comment?data.user.comment:"--"} </p>
+                     </div>  
                         <code class="text-purple-500 dark:text-purple-400 text-center"> ${data.token} </code>
               
                     <p class="text-center  text-sm font-normal text-gray-500 dark:text-gray-400">Thank you!</p>
@@ -2061,10 +2035,10 @@
             return (bytes / Math.pow(1024, i)).toFixed(decimals) + ' ' + sizes[i];
         }
     function checkBalance(token) {
-        ApiRequest(`${baseURL}/checkBalance`, 
+        ApiRequest(`${baseURL}/user`, 
             {
-            action: "checkBalance",
-            token: token,
+            action: "user-balance",
+            username: token,
             }
         )
         .then(response => {
@@ -2196,5 +2170,5 @@ s0.parentNode.insertBefore(s1,s0);
 </script>
 <!--End of Tawk.to Script-->
 
-
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 </body></html>
