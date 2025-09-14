@@ -640,7 +640,7 @@
     }
 ]
     },
-    "baseURL" :"https://laikipia.netgopro.co.ke/v7",
+    "baseURL" :"https://packages.co.ke/api",
     "router": 45,
     "version": "1.0.0"
 
@@ -917,7 +917,7 @@
                 });
                 if (otpCode.length === 4) {
                     // Verify OTP code
-                    ApiRequest(`${baseURL}/api.php`, {
+                    ApiRequest(`${baseURL}/otp`, {
                         action: "verifyOTP",
                         otp: otpCode,
                         authtoken: authtoken,
@@ -932,7 +932,7 @@
                             // Redirect to payment page or show success message
                             // window.location.href = `payment.html?checkoutRequestID=${response.checkoutRequestID}`;
                             if(register){
-                                ApiRequest(`${baseURL}/api.php`, {
+                                ApiRequest(`${baseURL}/registerUser`, {
                                     action: "registerUser",
                                     phone: userPhone,
                                     pin: user.pin,
@@ -1012,7 +1012,7 @@
                 });
                 if (otpCode.length === 4) {
                     // Verify OTP code
-                    ApiRequest(`${baseURL}/api.php`, {
+                    ApiRequest(`${baseURL}/authenticateUser`, {
                         action: "authenticateUser",
                         otp: otpCode,
                         phone: phone
@@ -1137,7 +1137,7 @@
                     router: router
                 };
                 //CHeck if user already exists
-                ApiRequest(`${baseURL}/api.php`, {
+                ApiRequest(`${baseURL}/checkUserExists`, {
                     action: "checkUserExists",
                     phone: mobilenumber
                    
@@ -1214,7 +1214,7 @@
                     return;
                 }
                 
-                ApiRequest(`${baseURL}/api.php`, {
+                ApiRequest(`${baseURL}/resetPIN`, {
                     action: "resetPIN",
                     newpin: newPin,
                     authtoken: authtoken,
@@ -1693,6 +1693,7 @@
             {
             
                 var res = JSON.parse(result);
+                console.log(res);
                 if(res.length ==0){
                     window.location.href = "https://google.com";
                 }
@@ -1739,11 +1740,11 @@
         }
 
         // Make an API request to the server to initiate payment
-        ApiRequest(`${baseURL}/api.php`, 
+        ApiRequest(`${baseURL}/initiate-payment`, 
             {
-            action: "initiatePayment",
+            action: "initiate-payment",
             phone: phone,
-            package: selected
+            packageId: selected
         }
         )
             .then(response => {
@@ -1757,8 +1758,9 @@
                 CheckoutRequestID = response.CheckoutRequestID;
                     var counter = 5;
                     const interval = setInterval(() => {
+
                         if (counter<=0){
-                            iziToast.info({
+                            iziToast.error({
                                 title: 'Timeout',
                                 message: 'Checkout timeout. Please try again. if your payment was successful, you can login using your mpesa transaction reference or contact support for further assistance.',
                                 position: 'topCenter',
@@ -1769,15 +1771,14 @@
                         
                         }
 
-                        ApiRequest(`${baseURL}/api.php`, 
+                        ApiRequest(`${baseURL}/check-payment-status/${CheckoutRequestID}`, 
                             {
-                                action: "checkPaymentStatus",
-                                checkoutRequestID: CheckoutRequestID
-                            }
+                                action: "check-payment-status",
+                            }, "GET"
                         )
                         .then(statusResponse => {
-                            
-                            if (statusResponse.status === "success") {
+                            console.log(selected)
+                            if (statusResponse.status === 1) {
                                 iziToast.success({
                                     title: `Success`,
                                     message: "Your payment was successful. Connecting you in a few seconds...",
@@ -1794,7 +1795,7 @@
                                
                                 clearInterval(interval);
                                
-                            } else if (statusResponse.status === "processing") {
+                            } else if (statusResponse.status === 0) {
                                 
                                 // Optionally, you can show a toast or update UI to indicate processing state
                                 
@@ -1852,32 +1853,35 @@
                         return error;
                     });  
     }
-    function ApiRequest(url, jsonData) {
+    function ApiRequest(url, jsonData,method="POST") {
+        console.log(jsonData);
          jsonData.mac = mac;
          jsonData.ip = ip;
-         jsonData.router = router;
+         jsonData.routerId = router;
         if(jsonData.action == "packages" ){
            
         }
-        else if(jsonData.action != "checkPaymentStatus" ){
+        else if(jsonData.action != "check-payment-status" ){
             closeLoading();
             displayLoading();
         }
         
     return new Promise((resolve, reject) => {
         var httpr = new XMLHttpRequest();
-        httpr.open("POST", url, true);
-        httpr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        httpr.open(method, url, true);
+        httpr.setRequestHeader("Content-type", "application/json");
         httpr.onreadystatechange = function () {
             if (httpr.readyState == 4 && httpr.status == 200) {
                 try {
                     var response = JSON.parse(httpr.responseText);
                     if (response.status === "success") {
                         jsonData.action== "initiatePayment" ? null : closeLoading();
+                        console.log(response)
                         resolve(response);
                         
                     }
-                    else if (response.status === "processing") {
+                    else if (response.status === 0) {
+                        console.log(response)
                         resolve(response);
                        
                     }
@@ -1886,21 +1890,27 @@
                        
                     }
                      else {
+                        console.log(response)
                         closeLoading();
                         reject(new Error(response.message || "An error occurred"));
                        
                     }
                 } catch (e) {
+                    console.log(e)
                     closeLoading();
                     reject(new Error("Invalid JSON response"));
                     
                 }
             } else if (httpr.readyState == 4) {
-                
+                console.log(httpr.responseText)
                 closeLoading();
                 reject(new Error("Request failed with status: " + httpr.responseText));
             }
         
+        }
+        if(method === "GET"){
+            httpr.send();
+            return;
         }
         httpr.send(JSON.stringify(jsonData));
     });
@@ -2051,7 +2061,7 @@
             return (bytes / Math.pow(1024, i)).toFixed(decimals) + ' ' + sizes[i];
         }
     function checkBalance(token) {
-        ApiRequest(`${baseURL}/api.php`, 
+        ApiRequest(`${baseURL}/checkBalance`, 
             {
             action: "checkBalance",
             token: token,
