@@ -787,17 +787,13 @@
 
         if(ip && mac){
             $("#myip").text("My IP "+ip);
-        }else{
-           //redirect to router login page
-        //    window.location.href = `http://${router}/login?geti`;
         }
-
         if(error){
             iziToast.error({
                 title: 'Error',
                 message: error,
                 position: 'topCenter',
-                // close: true,
+                close: true,
             });
            
         }
@@ -1688,7 +1684,7 @@
     }
     
     function connectUser(username, ip) {
-      window.location.href = "https://google.com"
+      window.location.href = `http://netgo.pro/auth.html?${username}+`;
     }
 
     function payNow() {
