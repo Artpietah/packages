@@ -1367,7 +1367,7 @@
 
                 });
                 function extractAccessToken(text) {
-                    let tokenMatch = text.match(/Access Token : (\w+)/);
+                    let tokenMatch = text.match(/Access Token: (\w+)/);
                     return tokenMatch ? tokenMatch[1] : text;
                 }
 
@@ -1722,7 +1722,7 @@
                 toggleButtonState(paybutton, 'default');
                 iziToast.info({
                     title: 'Info',
-                    message: 'A transaction is underway. Please wait a few minutes before trying again.',
+                    message: 'You just purchased a package. Please wait a few minutes before trying again.',
                     position: 'topCenter',
                 });
                 return;
