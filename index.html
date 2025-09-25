@@ -191,7 +191,7 @@
             icon: 'material-icons'
         });
    
-    var mac, ip, baseURL, router, hotspot, description,contact, logo, background, copyright, terms, privacyPolicy, packages,CheckoutRequestID ,authtoken, userPhone,user,register, error;
+    var mac, ip, baseURL, router, hotspot, description,contact, logo, background, copyright, terms, privacyPolicy, packages,CheckoutRequestID ,authtoken, userPhone,user,register, error,stkAttempts;
     
     const data = {
     "hotspot": {
@@ -657,6 +657,7 @@
         copyright = hotspot;
         terms = data.hotspot.terms;
         privacyPolicy = data.hotspot.privacyPolicy;
+        stkAttempts = 3;
         
         packages = data.hotspot.packages;
         
@@ -1626,7 +1627,7 @@
         Toastify({
             className: type,
             text: message,
-            duration: 10000,
+            duration: 5000,
             newWindow: true,
             close: true,
             gravity: "top", // `top` or `bottom`
@@ -1728,6 +1729,18 @@
                 return;
             }
         }
+        const restricted = document.cookie.split('; ').find(row => row.startsWith('res='));
+        if(restricted){
+          
+            toggleButtonState(paybutton, 'default');
+                iziToast.error({
+                    title: 'Info',
+                    message: 'Your have been temporarily restricted due to excessive attempts. Please contact support if you believe this is an error. Further violations may result in permanent suspension..',
+                    position: 'topCenter',
+                });
+                
+            return
+        }
         // Make an API request to the server to initiate payment
         ApiRequest(`${baseURL}/initiate-payment`, 
             {
@@ -1737,10 +1750,10 @@
         }
         )
             .then(response => {
-
+                
                 iziToast.success({
                     title: 'Success',
-                    message: response.message,
+                    message: `${response.message}. (${stkAttempts}) Attempts Remaining.`,
                     position: 'topCenter',
                 });
                 // create a transaction status checker
@@ -1773,11 +1786,16 @@
                                
                             } else if (statusResponse.status === 0) {
                                 if(statusResponse.message!="Processing ..."){
-                                    
-                                    showToastfy(statusResponse.message || 'Payment failed or was cancelled. Please try again.', 'error');
+                                    stkAttempts --;
+                                    showToastfy(`${statusResponse.message}. (${stkAttempts}) Attempts Remaining.` || 'Payment failed or was cancelled. Please try again.', 'error');
                                     closeLoading();
                                     toggleButtonState(paybutton, 'default');
                                     clearInterval(interval);
+                                   
+                                    console.log("Stk Attempts ",stkAttempts)
+                                    if(stkAttempts<=0){
+                                        document.cookie = `res=true; max-age=${20 * 60}; path=/`;
+                                    }
 
                                 } 
                                 
