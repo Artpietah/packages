@@ -1792,9 +1792,8 @@
                                     toggleButtonState(paybutton, 'default');
                                     clearInterval(interval);
                                    
-                                    console.log("Stk Attempts ",stkAttempts)
                                     if(stkAttempts<=0){
-                                        document.cookie = `res=true; max-age=${20 * 60}; path=/`;
+                                        document.cookie = `res=true; max-age=${30 * 60}; path=/`;
                                     }
 
                                 } 
